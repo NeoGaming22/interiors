@@ -1,166 +1,317 @@
---------- ### Problem IPLs ###
--- RequestImap(174727090)  -- Unknown, possibly causing CTDs
+RemoveImap(174727090)  -- Unknown, possibly causing CTDs
 --
-local interiorsActive = false
+local isLoaded = false
 
 Citizen.CreateThread(function()
-    while true do
-    Citizen.Wait(5000)
-    local interior = GetInteriorAtCoords(-308.88, 777.37, 118.77)
-    local isValid = IsValidInterior(interior)
-        if interiorsActive == false then
-            if IsInteriorReady(interior) then
-                if IsInteriorEntitySetActive(interior, "val_bank_front_windows") then
-                    interiorsActive = true
-                    print('Interiors are already active.')
-                else
-                    getValJail()
-                    getValBank()
-                    getValSaloon()
-                    getValGenstore()
-                    getKorrigan()
-                    getBeechers()
-                    getBraManor()
-                    getBronte()
-                    interiorsActive = true
-                    print('Interiors are now active!')
-                end
-            end
-        else
-            print('Interiors are already active.')
-            break 
-        end
-    end
-end)
-
-function getValBank()
-    local interior = GetInteriorAtCoords(-308.88, 777.37, 118.77)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if IsInteriorReady(interior) then
+    while not isLoaded do
+        Citizen.Wait(1)
+        local interior = GetInteriorAtCoords(-308.88, 777.37, 118.77)
+        local isValid = IsValidInterior(interior)
+        if isValid then
             if IsInteriorEntitySetActive(interior, "val_bank_front_windows") then
-                print("Valentine Bank Interior Already Active")
+                --("Valentine Bank Interior Already Active")
             else
                 ActivateInteriorEntitySet(interior, "val_bank_int_curtainsopen")
-                -- ActivateInteriorEntitySet(interior, "val_bank_mud5_windowblock")
                 ActivateInteriorEntitySet(interior, "val_bank_front_windows")
-                print("Valentine Bank Interior Activated")
+                --("Valentine Bank Interior Activated")
             end
         end
-    end
-end
-function getValSaloon()
-    local interior = GetInteriorAtCoords(-310.0119, 802.9316, 117.9846)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if IsInteriorReady(interior) then
+
+        local interior = GetInteriorAtCoords(-310.0119, 802.9316, 117.9846)
+        local isValid = IsValidInterior(interior)
+        if isValid then
             if IsInteriorEntitySetActive(interior, "front_windows") then
-                print("Valentine Saloon Interior Already Active")
+                --("Valentine Saloon Interior Already Active")
             else
                 ActivateInteriorEntitySet(interior, "front_windows")
                 ActivateInteriorEntitySet(interior, "val_saloon_br03_bed")
-                ActivateInteriorEntitySet(interior, "6_chair_poker_set")
-                print("Valentine Saloon Interior Activated")
+                ActivateInteriorEntitySet(interior, "4_chair_poker_set")
+                --("Valentine Saloon Interior Activated")
             end
         end
-    end
-end
-function getValJail()
-    local interior = GetInteriorAtCoords(-273.4513, 811.3408, 118.38)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if IsInteriorReady(interior) then
+
+        local interior = GetInteriorAtCoords(-273.4513, 811.3408, 118.38)
+        local isValid = IsValidInterior(interior)
+        if isValid then
             if IsInteriorEntitySetActive(interior, "val_jail_int_walla") then
-                print("Valentine Jail Interior Already Active")
+                --("Valentine Jail Interior Already Active")
             else
                 ActivateInteriorEntitySet(interior, "val_jail_int_walla")
                 ActivateInteriorEntitySet(interior, "val_jail_int_wallb")
-                print("Valentine Jail Interior Activated")
+                --("Valentine Jail Interior Activated")
             end
         end
-    end
-end
-function getValGenstore()
-    local interior = GetInteriorAtCoords(323.0087, 801.0296, 116.8817)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if IsInteriorReady(interior) then
+
+        local interior = GetInteriorAtCoords(323.0087, 801.0296, 116.8817)
+        local isValid = IsValidInterior(interior)
+        if isValid then
             if IsInteriorEntitySetActive(interior, "val_genstore_night_light") then
-                print("Valentine Jail Interior Already Active")
+                --("Valentine General Store Nightlight Activated")
             else
                 ActivateInteriorEntitySet(interior, "val_genstore_night_light")
-                print("Valentine General Store Nightlight Activated")
+                --("Valentine General Store Nightlight Activated")
             end
         end
-    end
-end
-function getKorrigan()
-    local interior = GetInteriorAtCoords(3285.792, -1325.603, 43.08399)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if IsInteriorReady(interior) then
-            if IsInteriorEntitySetActive(interior, "korrigan_props_default") then
-                print("Riverboat Interior Already Active")
+
+        local interior = GetInteriorAtCoords(3287.9997558594,-1312.0001220703,44.0)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+            if IsInteriorEntitySetActive(interior, "korrigan_props_default") and IsInteriorEntitySetActive(interior, "korrigan_props_poker") then
+                --("Riverboat Interior Already Active")
             else
-                ActivateInteriorEntitySet(interior, "korrigan_props_poker")
                 ActivateInteriorEntitySet(interior, "korrigan_props_default")
-                print("Riverboat Interior Activated")
+                --("Riverboat Interior Activated")
             end
         end
-    end
-end
-function getBeechers()
-    local interior = GetInteriorAtCoords(-1643.893, -1358.232, 86.4541)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if IsInteriorReady(interior) then
+
+        local interior = GetInteriorAtCoords(-1643.893, -1358.232, 86.4541)
+        local isValid = IsValidInterior(interior)
+        if isValid then
             if IsInteriorEntitySetActive(interior, "bee_01_house_fireplace_on") then
-                print("Beechers Interior Already Active")
+                --("Beechers Interior Already Active")
             else
                 ActivateInteriorEntitySet(interior, "bee_01_masterBR_bed01")
                 ActivateInteriorEntitySet(interior, "Beechers_decorated_after_Abigail3")
                 ActivateInteriorEntitySet(interior, "IntGrp_livingrm_furniture_basic")
                 ActivateInteriorEntitySet(interior, "bee_01_house_fireplace_on")
-                print("Beechers Interior Activated")
+                --("Beechers Interior Activated")
             end
         end
-    end
-end
-function getBronte()
-    local interior = GetInteriorAtCoords(2385.548, -1221.158, 46.1729)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if not IsInteriorEntitySetActive(interior, "bronte_shutters_open") then
-            ActivateInteriorEntitySet(interior, "bronte_shutters_open")
-            ActivateInteriorEntitySet(interior, "bronte_glass_unbreakable")
-        end
-    end
-end
 
-function getBraManor()
-    local interior = GetInteriorAtCoords(1006.364, -1766.812, 46.5922)
-    local isValid = IsValidInterior(interior)
-    if isValid then
-        if not IsInteriorEntitySetActive(interior, "bra_mansion_WindowsStatic") then
-            ActivateInteriorEntitySet(interior, "bra_mansion_WindowsStatic")
-            ActivateInteriorEntitySet(interior, "bra_int_bedroom_clean")
+        local interior = GetInteriorAtCoords(2385.548, -1221.158, 46.1729)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+            if not IsInteriorEntitySetActive(interior, "bronte_shutters_open") then
+                ActivateInteriorEntitySet(interior, "bronte_shutters_open")
+                ActivateInteriorEntitySet(interior, "bronte_glass_unbreakable")
+            end
         end
+    
+        local interior = GetInteriorAtCoords(1006.364, -1766.812, 46.5922)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+            if not IsInteriorEntitySetActive(interior, "bra_mansion_WindowsStatic") then
+                ActivateInteriorEntitySet(interior, "bra_mansion_WindowsStatic")
+                ActivateInteriorEntitySet(interior, "bra_int_bedroom_clean")
+            end
+        end
+
+        local interior = GetInteriorAtCoords(2643.708984375,-1293.3395996094,51.24600982666)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "new_com_bank_int_des") then
+	            --("St Denis Bank Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "new_com_bank_int_des") 
+                --("St Denis Bank Interior Activated")
+            end
+        end
+
+        local interior = GetInteriorAtCoords(1288.9132080078,-1303.3087158203,77.699859619141)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "rhobank_int_walla") then
+	            --("Rhodes Vault Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "rhobank_int_walla") 
+                --("Rhodes Bank Vault Interior Activated")
+            end
+        end
+
+        local interior = GetInteriorAtCoords(1342.3599853516,-1374.6173095703,81.0)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "rho_sal_tables01") then
+	            --("Rhodes Saloon Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "rho_sal_tables01")
+                --("Rhodes Saloon Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(777.28698730469,846.7998046875,117.20547485352)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "_car_house_int_before_ransack") and IsInteriorEntitySetActive(interior, "_car_house_int_day") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "_car_house_int_before_ransack")
+                ActivateInteriorEntitySet(interior, "_car_house_int_day")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(-2177.0424804688,718.88171386719,120.86156463623)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "han_int_tables_upright") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "han_int_tables_upright")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(1319.0007324219,-2281.0004882813,51.024421691895)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "cat_house_propset") and IsInteriorEntitySetActive(interior, "cat_house_lights_ON") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "cat_house_propset")
+                ActivateInteriorEntitySet(interior, "cat_house_lights_ON")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(-817.17687988281,354.38427734375,96.366539001465)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "IntGroup_Downes_before_move") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "IntGroup_Downes_before_move")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(1786.8262939453,-85.348686218262,55.937133789063)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "clean_abe") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "clean_abe")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(-443.90466308594,497.06292724609,97.230682373047)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "cas_housewares") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "cas_housewares")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(1134.5697021484,-979.48291015625,69.552551269531)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "LT_murder_before") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "LT_murder_before")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(2698.0,-1200.0,57.0)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "new_forMyArt_gallery") and IsInteriorEntitySetActive(interior, "new_forMyArt_paintings") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "new_forMyArt_gallery")
+                ActivateInteriorEntitySet(interior, "new_forMyArt_paintings")
+                --("Interior Activated")
+            end
+        end
+		
+		local interior = GetInteriorAtCoords(1897.0,-1863.0,44.000003814697)
+        local isValid = IsValidInterior(interior)
+        if isValid then
+	        if IsInteriorEntitySetActive(interior, "shb_p_mansion_01") then
+	            --("Interior Already Active")
+	        else
+                ActivateInteriorEntitySet(interior, "shb_p_mansion_01")
+                --("Interior Activated")
+            end
+        end
+		
+		-- local interior = GetInteriorAtCoords(-1090.7846679688,711.73596191406,83.230895996094)
+        -- local isValid = IsValidInterior(interior)
+        -- if isValid then
+	    --     if IsInteriorEntitySetActive(interior, "mp006_mshine_theme_hunter") then
+		-- 		--("Interior Already Active")
+	    --     else
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_band2")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_bar_benchAndFrame")
+        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_dressing_5")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_hidden_door_open")
+		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall1")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_location1")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall2")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_Still_02")
+		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_theme_hunter")
+        --         --("Interior Activated")
+        --     end
+        -- end
+		
+		-- local interior = GetInteriorAtCoords(-2774.65625,-3046.2746582031,-9.70361328125)
+        -- local isValid = IsValidInterior(interior)
+        -- if isValid then
+	    --     if IsInteriorEntitySetActive(interior, "mp006_mshine_theme_refined") then
+		-- 		--("Interior Already Active")
+	    --     else
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_band2")
+        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_dressing_5")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_hidden_door_open")
+		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall1")
+        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_location1")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall2")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_Still_02")
+		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_theme_refined")
+        --         --("Interior Activated")
+        --     end
+        -- end
+		
+		-- local interior = GetInteriorAtCoords(1629.7342529297,828.16253662109,123.93880462646)
+        -- local isValid = IsValidInterior(interior)
+        -- if isValid then
+	    --     if IsInteriorEntitySetActive(interior, "mp006_mshine_theme_goth") then
+		-- 		--("Interior Already Active")
+	    --     else
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_band2")
+        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_dressing_5")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_hidden_door_open")
+		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall1")
+        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_location1")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall2")
+        --         ActivateInteriorEntitySet(interior, "mp006_mshine_Still_02")
+		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_theme_goth")
+        --         --print("Interior Activated")
+        --     end
+        -- end
+        isLoaded = true
     end
-end
+end)
 
 --------------------------------                                   ############# -- Valentine Investigate -- ###############                                       ----------------------
+RequestImap(412645416)
+RequestImap(46615614)
+RequestImap(2037986663)
+
+RequestImap(2103049614)
+RequestImap(1171027246)
+RequestImap(-1798979372)
+
+RequestImap(-1656839837)
+RequestImap(608826532)
+RequestImap(734740942)
 
 RequestImap(-661560211) -- Barrels Everywhere?
 RequestImap(-1933617196) -- Structure in front of gunsmith?
--- RequestImap(1202020135)  -- Blank Banners across mainstreet
-
+RemoveImap(1202020135)  -- Blank Banners across mainstreet
 RequestImap(-892659042) -- Leatherworker on west side of encampment
 RequestImap(-1588793465) -- Structure in front of motel?
 RequestImap(1186533019) -- Chair in front of Law Offices
 RequestImap(-156313117) -- Structure in front of Law Offices
 RequestImap(56708243) -- Green Building and General Store Boarded up?
 RequestImap(1136898294) -- Saloon Boarded Up??
-RequestImap(30201771) -- Water Trough?
+RemoveImap(30201771) -- Water Trough?
 RequestImap(-1475403379) -- Fencing at farm
 RequestImap(696143352) -- Prison Break?
 RequestImap(897455211) -- something regarding the saloon and store?
@@ -170,50 +321,51 @@ RequestImap(-554932707) -- Something regarding the general store
 
 
 --------------------------------                                   ############# -- Valentine Multiplayer (Online) Components -- ###############                                       ----------------------
--- RequestImap(731209239)  -- Fast Travel Marker Valentine Train Station
--- RequestImap(824748066)  -- Event Marker Western side of town along path ( -229.93, 946.05, 138.33 )
+RemoveImap(731209239)  -- Fast Travel Marker Valentine Train Station
+RemoveImap(824748066)  -- Event Marker Western side of town along path ( -229.93, 946.05, 138.33 )
 
 --------------------------------                                   ############# -- Valentine Necessities -- ###############                                       ----------------------
 RemoveImap(774477221) -- Valentine Sheriff's Office Crumbled Wall parts...
 RequestImap(1097534152) -- Valentine Sheriffs Office Outer wall
--- RequestImap(2095116685) -- supplies/boxes in mainstreet front of General Store, Saloon, Green building
-RequestImap(192173299) -- Valentine -- Support Beams and signs -- Mainstreet Saloon
--- RequestImap(1081087978) -- Valentine -- Green Building and Restaurant mainstreet - Pre-paint, almost completed stage. (Help wanted sign) -- https://gyazo.com/b4d1f0b57d17c470e7db030f050db1c0     (Do Not Load Both(1/2))
+RemoveImap(2095116685) -- supplies/boxes in mainstreet front of General Store, Saloon, Green building
+RemoveImap(192173299) -- Valentine -- Support Beams and signs -- Mainstreet Saloon BEAT UP
+RemoveImap(1081087978) -- Valentine -- Green Building and Restaurant mainstreet - Pre-paint, almost completed stage. (Help wanted sign) -- https://gyazo.com/b4d1f0b57d17c470e7db030f050db1c0     (Do Not Load Both(1/2))
 RequestImap(903666582) -- Valentine -- Green Building and Restaurant mainstreet - Painted, completed stage.  Keane's Rooms for Rent -- https://gyazo.com/b8f9f77bb52aeb37aac6dd21463a2133         (Do Not Load Both(2/2))
--- RequestImap(282485265) -- Valentine Green building boarded up
+RemoveImap(282485265) -- Valentine Green building boarded up
 RequestImap(637874199) -- Valentine -- Green Building Lamp
 RequestImap(-1521525254)  --Green House Valentine -- Exterior Trees and Flowers 1(Run 1 and 2 together)
 RequestImap(-761186147)  --Green House Valentine -- Exterior Trees and Flowers 2(Run 1 and 2 together)
--- RequestImap(2040843256) -- Valentine -- Construction supplies outside of Smithfields Saloon / Green Building -- https://gyazo.com/c5b67926f2c4304b74061ca62b345a1b
--- RequestImap(999248445) -- Valentine -- Yellow Wagon with Blue Barrels outside Smithfields Saloon  -- https://gyazo.com/467e15f5cd1de68bad5e2d414fa330d4
--- RequestImap(-713587740)  -- Valentine -- Construction Material in Roadway -- https://gyazo.com/665f85e9e2b00ec78c5fd6b2b0dd2332
--- RequestImap(-1217078386) -- Valentine -- Wagons blocking road through Valentine -- https://gyazo.com/c6758dd8f86601eaeefef2b6ef69f38c -- https://gyazo.com/83e1fb7bb26402e6d6329777e7a766a9
--- RequestImap(-1579403437) -- Valentine -- Wagon Parked in front of bank -- https://gyazo.com/5b08f55828e867f872552bb8881dc293
--- RequestImap(517553365) -- Valentine -- 2 Wagons, 1 in front of and behind of blue house across from Keane's Saloon.  -- https://gyazo.com/4444709e3cc069fddd8d4003d5f0caa3
--- RequestImap(805009584) -- Valentine -- Western Barricades -- https://gyazo.com/631b61e44cae28d4c7c4391d1d7830a7
--- RequestImap(-560409108) -- Valentine -- Eastern Barricades -- https://gyazo.com/45304e29a207805e373bcd921af6a668
--- RequestImap(-518785376) -- Valentine -- Southern Barricades -- https://gyazo.com/2fa60fa4d76205783907e2eec98253ec
+RemoveImap(2040843256) -- Valentine -- Construction supplies outside of Smithfields Saloon / Green Building -- https://gyazo.com/c5b67926f2c4304b74061ca62b345a1b
+RemoveImap(999248445) -- Valentine -- Yellow Wagon with Blue Barrels outside Smithfields Saloon  -- https://gyazo.com/467e15f5cd1de68bad5e2d414fa330d4
+RemoveImap(-713587740)  -- Valentine -- Construction Material in Roadway -- https://gyazo.com/665f85e9e2b00ec78c5fd6b2b0dd2332
+RemoveImap(-1217078386) -- Valentine -- Wagons blocking road through Valentine -- https://gyazo.com/c6758dd8f86601eaeefef2b6ef69f38c -- https://gyazo.com/83e1fb7bb26402e6d6329777e7a766a9
+RemoveImap(-1579403437) -- Valentine -- Wagon Parked in front of bank -- https://gyazo.com/5b08f55828e867f872552bb8881dc293
+RemoveImap(517553365) -- Valentine -- 2 Wagons, 1 in front of and behind of blue house across from Keane's Saloon.  -- https://gyazo.com/4444709e3cc069fddd8d4003d5f0caa3
+RemoveImap(805009584) -- Valentine -- Western Barricades -- https://gyazo.com/631b61e44cae28d4c7c4391d1d7830a7
+RemoveImap(-560409108) -- Valentine -- Eastern Barricades -- https://gyazo.com/45304e29a207805e373bcd921af6a668
+RemoveImap(-518785376) -- Valentine -- Southern Barricades -- https://gyazo.com/2fa60fa4d76205783907e2eec98253ec
 
 --------------------------------                                   ############# -- Valentine Mainstreet Sheriffs Office -- ###############                                       ----------------------
--- RequestImap(-1301569116) -- Valentine -- Sheriffs Office boarded up
+RemoveImap(-1301569116) -- Valentine -- Sheriffs Office boarded up
 --------------------------------                                   ############# -- Valentine Mainstreet Law Offices     -- ###############                                       ----------------------
--- RequestImap(-52140817)   -- Valentine -- Law Office Boarded Up
+RemoveImap(-52140817)   -- Valentine -- Law Office Boarded Up
 RequestImap(924412185) -- Law offices (REMOVE FOR structural damage)
 --------------------------------                                   ############# -- Valentine Mainstreet Hotel           -- ###############                                       ----------------------
--- RequestImap(-780819048)  -- Valentine -- Hotel Boarded Up
+RemoveImap(-780819048)  -- Valentine -- Hotel Boarded Up
 --------------------------------                                   ############# -- Valentine Mainstreet Bank            -- ###############                                       ----------------------
--- RequestImap(-1989899190) -- Valentine -- Bank Boarded Up
+RemoveImap(-1989899190) -- Valentine -- Bank Boarded Up
 --------------------------------                                   ############# -- Valentine Mainstreet Doctors Office  -- ###############                                       ----------------------
--- RequestImap(-981203673)  -- Valentine -- Doctors Office boarded up
+RemoveImap(-981203673)  -- Valentine -- Doctors Office boarded up
 --------------------------------                                   ############# -- Valentine Mainstreet Saloon          -- ###############                                       ----------------------
--- RequestImap(-776975047)  -- Valentine -- Main Street Saloon Front Doors locked
--- RequestImap(1385025009)  -- Valentine -- Closed sign on main street Saloon
--- RequestImap(199047531)   -- Valentine -- Mainstreet Saloon boarded windows
--- RequestImap(-1158072415) -- Valentine -- Main Street Saloon Sign in front
+RemoveImap(-776975047)  -- Valentine -- Main Street Saloon Front Doors locked
+RemoveImap(1385025009)  -- Valentine -- Closed sign on main street Saloon
+RemoveImap(199047531)   -- Valentine -- Mainstreet Saloon boarded windows
+RequestImap(-1158072415) -- Valentine -- Main Street Saloon Sign in front -CLean Version
 --------------------------------                                   ############# -- Valentine Mainstreet General Store   -- ###############                                       ----------------------
--- RequestImap(406334892) -- Valentine -- General Store Closed Sign on door --
--- RequestImap(1228600352) -- Valentine General Store boarded up
--- RequestImap(135886022) -- Valentine -- Sign in front of General Store
+RemoveImap(406334892) -- Valentine -- General Store Closed Sign on door --
+RemoveImap(1228600352) -- Valentine General Store boarded up
+ RequestImap(135886022) -- Valentine -- Sign in front of General Store
+ RequestImap(766024860) -- missing blue posts hotel
 --------------------------------                                   ############# -- Valentine Cemetery                   -- ###############                                       ----------------------
 RemoveImap(-391187090) -- Grass on grave Valentine cemetery
 RemoveImap(-1902184438) -- dirt pile from grave dug Valentine cemetery
@@ -231,7 +383,7 @@ RemoveImap(267578156) -- Coffin in right grave, Valentine
 
 
 ------------------------------------- Railroad Stuff
--- RequestImap(-794503195) -- Broken Bridge and Pieces Pieces  -- 520 1754 187
+RemoveImap(-794503195) -- Broken Bridge and Pieces Pieces  -- 520 1754 187
 ------------------------------------- Central Union Train Mission
 RequestImap(2077623691) -- Track Bed - Full Legnth
 RequestImap(-555736180) -- Crossing 1818
@@ -352,7 +504,7 @@ RemoveImap(-30541382) -- lantern
 RemoveImap(-960328988)  -- lantern
 
 -- GRASS and GROUND
--- RequestImap(-1496619689) -- Green Ground 670 -1236 44
+RemoveImap(-1496619689) -- Green Ground 670 -1236 44
 RequestImap(-61896664) -- Worn Brown Ground 670 -1236 44
 RequestImap(-648893593) -- Version 1 of Grass and Ferns
 RequestImap(1534006738) -- Version 2 of Grass and Ferns
@@ -364,202 +516,204 @@ RequestImap(-1936937394) -- Grass, Flowers and weeds]]
 
 
 -- German Guys Wagon
--- RequestImap(-1123811713) -- Wagon v1  657 -1231 44
--- RequestImap(1679038623) -- Wagon v2  657 -1231 44
--- RequestImap(-546137515) -- Wagon v3 657 -1231 44  3 Boxes in Back Canopy
--- RequestImap(-462274808) -- Small Box in wgaon
--- RequestImap(-1284301817) -- Antlers on German Wagon
--- RequestImap(1169958167) -- Red Table Cloth German Wagon
+RemoveImap(-1123811713) -- Wagon v1  657 -1231 44
+RemoveImap(1679038623) -- Wagon v2  657 -1231 44
+RemoveImap(-546137515) -- Wagon v3 657 -1231 44  3 Boxes in Back Canopy
+RemoveImap(-462274808) -- Small Box in wgaon
+RemoveImap(-1284301817) -- Antlers on German Wagon
+RemoveImap(1169958167) -- Red Table Cloth German Wagon
+
+RequestImap(-1293161516)
 
 --Arthurs Wagon
--- RequestImap(2072112547) --  Wagon v1 with Canopy
--- RequestImap(-2016771661) -- Wagon v2
--- RequestImap(202127432) --  Wagon v3 with Shevles Tools
--- RequestImap(1601820048) -- Hide Rug 
--- RequestImap(2025485344) -- Table Top 
--- RequestImap(901520480) -- Table 
--- RequestImap(-1999465365) -- Right Skull  Wagon
--- RequestImap(853723410) -- Left Alligator Skull  Wagon
--- RequestImap(-1774140220) --  Chest v1
--- RequestImap(-262271608) --  Chest v2 Striped Shirt
--- RequestImap(102652153) --  Shaving Kit
--- RequestImap(-1434077648) -- Small Containers 
--- RequestImap(-1728638189) -- Bigger boxes v1 
--- RequestImap(93121605) -- Bigger Boxes v2 
--- RequestImap(-205043526) -- Bigger Boxes v3 
--- RequestImap(1027586707) -- Bigger Boxes v4 
--- RequestImap(-1570232590) -- Open Flipped Small Box 
--- RequestImap(648514907) -- Open Box Flipped
--- RequestImap(1351016737) -- Little Box inside Flipped Box
--- RequestImap(721720861) --  Small Box on Ground
--- RequestImap(1620317782) -- v1 Mixture of Boxes 
--- RequestImap(1952267752) -- v2 Mixture of Boxes 
--- RequestImap(-1739164071) -- Book on Small Table 
--- RequestImap(-1331617405) --  Book
--- RequestImap(-959814975) -- Box by Book v1
--- RequestImap(-1676997321) -- Box by book v2
--- RequestImap(1096093290) -- Quiver on Ground
--- RequestImap(626928579) -- Picktures on Ground
--- RequestImap(313722477) -- Tools no wagon
--- RequestImap(976082270) -- Tools, painting, guns
--- RequestImap(153759048) -- Chair
--- RequestImap(-1147256587) -- Map
--- RequestImap(1676971154) -- Photo
+RemoveImap(2072112547) --  Wagon v1 with Canopy
+RemoveImap(-2016771661) -- Wagon v2
+RemoveImap(202127432) --  Wagon v3 with Shevles Tools
+RemoveImap(1601820048) -- Hide Rug 
+RemoveImap(2025485344) -- Table Top 
+RemoveImap(901520480) -- Table 
+RemoveImap(-1999465365) -- Right Skull  Wagon
+RemoveImap(853723410) -- Left Alligator Skull  Wagon
+RemoveImap(-1774140220) --  Chest v1
+RemoveImap(-262271608) --  Chest v2 Striped Shirt
+RemoveImap(102652153) --  Shaving Kit
+RemoveImap(-1434077648) -- Small Containers 
+RemoveImap(-1728638189) -- Bigger boxes v1 
+RemoveImap(93121605) -- Bigger Boxes v2 
+RemoveImap(-205043526) -- Bigger Boxes v3 
+RemoveImap(1027586707) -- Bigger Boxes v4 
+RemoveImap(-1570232590) -- Open Flipped Small Box 
+RemoveImap(648514907) -- Open Box Flipped
+RemoveImap(1351016737) -- Little Box inside Flipped Box
+RemoveImap(721720861) --  Small Box on Ground
+RemoveImap(1620317782) -- v1 Mixture of Boxes 
+RemoveImap(1952267752) -- v2 Mixture of Boxes 
+RemoveImap(-1739164071) -- Book on Small Table 
+RemoveImap(-1331617405) --  Book
+RemoveImap(-959814975) -- Box by Book v1
+RemoveImap(-1676997321) -- Box by book v2
+RemoveImap(1096093290) -- Quiver on Ground
+RemoveImap(626928579) -- Picktures on Ground
+RemoveImap(313722477) -- Tools no wagon
+RemoveImap(976082270) -- Tools, painting, guns
+RemoveImap(153759048) -- Chair
+RemoveImap(-1147256587) -- Map
+RemoveImap(1676971154) -- Photo
 
 -- Pearsons Wagon
--- RequestImap(764763647) -- Provisions Wagon v1
--- RequestImap(1742990618) Provisions Wagon v2
--- RequestImap(-751959361) -- Provisons Wagon v3
--- RequestImap(-1279618207) -- Provisions Wagon v4 Empty
--- RequestImap(-492479795) -- Skull Provisions Wagon
--- RequestImap(-320577790) -- Barrel with Lantern
--- RequestImap(1246210400) -- Provision Boxes Large
--- RequestImap(-172246728)  --Table - Cutting Board - Barrel of Salt v1
--- RequestImap(-850189983)  --Table - Cutting Board - Barrel of Salt v2
--- RequestImap(126970802) -- Two Boxes Provisions
--- RequestImap(715730031) -- Pans and Blue Table Cloth for Table v1
--- RequestImap(349896400) -- Pans and Table Cloth for Table v2
--- RequestImap(110400393) -- Provisions, keg, rope for Table v1 (will work with v2 as well but clips)
--- RequestImap(482931525) -- Provisions, Fruits, Milk, red cloth
--- RequestImap(-1291679096) -- Potato Bags for Wagon v3
--- RequestImap(-387018143) -- Two Barrels
--- RequestImap(5585502) -- Red Cloth v2 watermelons, pumpkins flour
--- RequestImap(1309652195) -- Water and Dishes
--- RequestImap(-112364237) --Ammo Tools
--- RequestImap(-1983416665) -- Spilled Flour
--- RequestImap(438624963) -- Supplies
--- RequestImap(82769080) -- Plate and Spilled Flour
--- RequestImap(1125807846) -- Bag of Flour
--- RequestImap(-1894946791) -- Plate
--- RequestImap(-1362716862) -- red cloth v3 provisions
--- RequestImap(-624219879) -- Pans open can ammo for v1 table
--- RequestImap(977061573) -- Pans open can ammo for v2 table
--- RequestImap(1729014506) -- Provisions for table v1
--- RequestImap(-916538063) -- Provisions for table v2
--- RequestImap(1886481528) -- Spilled flour
--- RequestImap(-1507376753) -- Bag of Flour
--- RequestImap(-1370620659) -- Pans for table v1
--- RequestImap(1074130180) -- Pans for table v2
--- RequestImap(652735549) -- Provisions for table v1
+RemoveImap(764763647) -- Provisions Wagon v1
+RemoveImap(1742990618) --Provisions Wagon v2
+RemoveImap(-751959361) -- Provisons Wagon v3
+RemoveImap(-1279618207) -- Provisions Wagon v4 Empty
+RemoveImap(-492479795) -- Skull Provisions Wagon
+RemoveImap(-320577790) -- Barrel with Lantern
+RemoveImap(1246210400) -- Provision Boxes Large
+RemoveImap(-172246728)  --Table - Cutting Board - Barrel of Salt v1
+RemoveImap(-850189983)  --Table - Cutting Board - Barrel of Salt v2
+RemoveImap(126970802) -- Two Boxes Provisions
+RemoveImap(715730031) -- Pans and Blue Table Cloth for Table v1
+RemoveImap(349896400) -- Pans and Table Cloth for Table v2
+RemoveImap(110400393) -- Provisions, keg, rope for Table v1 (will work with v2 as well but clips)
+RemoveImap(482931525) -- Provisions, Fruits, Milk, red cloth
+RemoveImap(-1291679096) -- Potato Bags for Wagon v3
+RemoveImap(-387018143) -- Two Barrels
+RemoveImap(5585502) -- Red Cloth v2 watermelons, pumpkins flour
+RemoveImap(1309652195) -- Water and Dishes
+RemoveImap(-112364237) --Ammo Tools
+RemoveImap(-1983416665) -- Spilled Flour
+RemoveImap(438624963) -- Supplies
+RemoveImap(82769080) -- Plate and Spilled Flour
+RemoveImap(1125807846) -- Bag of Flour
+RemoveImap(-1894946791) -- Plate
+RemoveImap(-1362716862) -- red cloth v3 provisions
+RemoveImap(-624219879) -- Pans open can ammo for v1 table
+RemoveImap(977061573) -- Pans open can ammo for v2 table
+RemoveImap(1729014506) -- Provisions for table v1
+RemoveImap(-916538063) -- Provisions for table v2
+RemoveImap(1886481528) -- Spilled flour
+RemoveImap(-1507376753) -- Bag of Flour
+RemoveImap(-1370620659) -- Pans for table v1
+RemoveImap(1074130180) -- Pans for table v2
+RemoveImap(652735549) -- Provisions for table v1
 
 -- Javiers Tent
--- RequestImap(-347518940) -- Skull near Banjo
--- RequestImap(-1887167048) -- Banjo
--- RequestImap(530288130) -- Cushion Top near log
--- RequestImap(1538837441) -- Fur seat for Log near Banjo
--- RequestImap(-1999825729) -- Brown Cow Hide near Banjo
+RemoveImap(-347518940) -- Skull near Banjo
+RemoveImap(-1887167048) -- Banjo
+RemoveImap(530288130) -- Cushion Top near log
+RemoveImap(1538837441) -- Fur seat for Log near Banjo
+RemoveImap(-1999825729) -- Brown Cow Hide near Banjo
 
 -- Hosea
--- RequestImap(2728487) -- Tent v1 Supplies 660 -1256 43
--- RequestImap(1674800958) -- Tent v2 Empty 660 -1256 43
--- RequestImap(-782359587) -- Tent v3 Patches
--- RequestImap(510052409) -- Tent v4 Opened at front only
--- RequestImap(291770965) -- Tent v5 closed
--- RequestImap(-2143243848) -- Tent v6 Open on front
--- RequestImap(1209017192) -- Tent v7 open front
--- RequestImap(-644575724) -- Tevt v8 closed
--- RequestImap(1700661865) -- Tent v9 Closed
--- RequestImap(-2001921071) -- Square Rug near round table top
--- RequestImap(1210820782) -- Barrel with Latntern
+RemoveImap(2728487) -- Tent v1 Supplies 660 -1256 43
+RemoveImap(1674800958) -- Tent v2 Empty 660 -1256 43
+RemoveImap(-782359587) -- Tent v3 Patches
+RemoveImap(510052409) -- Tent v4 Opened at front only
+RemoveImap(291770965) -- Tent v5 closed
+RemoveImap(-2143243848) -- Tent v6 Open on front
+RemoveImap(1209017192) -- Tent v7 open front
+RemoveImap(-644575724) -- Tevt v8 closed
+RemoveImap(1700661865) -- Tent v9 Closed
+RemoveImap(-2001921071) -- Square Rug near round table top
+RemoveImap(1210820782) -- Barrel with Latntern
 
 -- Bills Sleeping Area
--- RequestImap(-1292493167) -- Rope and Boxes near Dream Catcher
--- RequestImap(-1451784475) -- v1 Canopy inbetween bucket and blue chairs
--- RequestImap(1028224932) -- v2 Canopy inbetween bucket and blue chairs
--- RequestImap(1128417383) -- v3 Canopy with Candle
--- RequestImap(292845400) -- Skull and bucket Near Rope and Boxes
--- RequestImap(1609975546) -- Crates and Gun Table
--- RequestImap(-948006506) -- Blue Towel Dynamite
--- RequestImap(1700045179) -- Dynamite
--- RequestImap(-1045678888) -- Small Tables
--- RequestImap(-1663177928) --Lure Kit
+RemoveImap(-1292493167) -- Rope and Boxes near Dream Catcher
+RemoveImap(-1451784475) -- v1 Canopy inbetween bucket and blue chairs
+RemoveImap(1028224932) -- v2 Canopy inbetween bucket and blue chairs
+RemoveImap(1128417383) -- v3 Canopy with Candle
+RemoveImap(292845400) -- Skull and bucket Near Rope and Boxes
+RemoveImap(1609975546) -- Crates and Gun Table
+RemoveImap(-948006506) -- Blue Towel Dynamite
+RemoveImap(1700045179) -- Dynamite
+RemoveImap(-1045678888) -- Small Tables
+RemoveImap(-1663177928) --Lure Kit
 
 -- Back Wagons
--- RequestImap(1084869405) -- Two Wagons v1 Supplies 674 -1267 43
--- RequestImap(1636281938) -- Two Wagons v2 Empty 674 -1267 43
--- RequestImap(-1642249622) -- Two wagons v3 empty Canopy
+RemoveImap(1084869405) -- Two Wagons v1 Supplies 674 -1267 43
+RemoveImap(1636281938) -- Two Wagons v2 Empty 674 -1267 43
+RemoveImap(-1642249622) -- Two wagons v3 empty Canopy
 
 -- Dutchs tent
--- RequestImap(-109425099) -- Tent v1 Empty Open Both ends
--- RequestImap(539843907) -- Tent v2 Empty Right Side Opened
--- RequestImap(180356041) -- Tent v3 Opened Both Ends
--- RequestImap(-71508135) -- Tent v4 Flaps Closed
--- RequestImap(40009123) -- Tent v5 Flaps Closed
--- RequestImap(1070723367) -- Tent v6 Flaps Closed
--- RequestImap(-146943962) -- Tent v7 Open both ends
--- RequestImap(1261237250) -- Tent v8 open front
--- RequestImap(-692521236) -- Tent v9 open on back
--- RequestImap(1049842342) -- Inside Tent Bear Rug Stove Books Barrels and Canopy 
--- RequestImap(1034009086) -- Inside  Tent Boxes, Stove Lanturn, Canopy
--- RequestImap(-160392273) --  Tent Inside Music Box Canopy
--- RequestImap(2119205605) -- Cash Box behind Dutchs Tent 1
--- RequestImap(-619637948) -- Cash box behind Dutchs tent 2
--- RequestImap(-1639921686) -- Tent Flap
+RemoveImap(-109425099) -- Tent v1 Empty Open Both ends
+RemoveImap(539843907) -- Tent v2 Empty Right Side Opened
+RemoveImap(180356041) -- Tent v3 Opened Both Ends
+RemoveImap(-71508135) -- Tent v4 Flaps Closed
+RemoveImap(40009123) -- Tent v5 Flaps Closed
+RemoveImap(1070723367) -- Tent v6 Flaps Closed
+RemoveImap(-146943962) -- Tent v7 Open both ends
+RemoveImap(1261237250) -- Tent v8 open front
+RemoveImap(-692521236) -- Tent v9 open on back
+RemoveImap(1049842342) -- Inside Tent Bear Rug Stove Books Barrels and Canopy 
+RemoveImap(1034009086) -- Inside  Tent Boxes, Stove Lanturn, Canopy
+RemoveImap(-160392273) --  Tent Inside Music Box Canopy
+RemoveImap(2119205605) -- Cash Box behind Dutchs Tent 1
+RemoveImap(-619637948) -- Cash box behind Dutchs tent 2
+RemoveImap(-1639921686) -- Tent Flap
 
 -- Base
--- RequestImap(1802272784) -- Camp Extras (MUST LOAD FOR NORMAL SETUP)
--- RequestImap(2108368013) -- Tent frames for Dutch, Hosea and Arthurs Bed (Must Load for Normal Setup)
--- RequestImap(1402472902) -- Setting Up Camp v1
--- RequestImap(-1458944281) -- Setting Up Camp v2
--- RequestImap(1691578074) -- Log Fire Pit Trash Broken Barrels
--- RequestImap(810684093) -- Blue Trash Barrels on Beach
--- RequestImap(321594819) -- Broken Table on Beach
--- RequestImap(-385999832) -- Blue Trash Barrels on Beach
--- RequestImap(-1656481590) -- Target Shooting on Beach (Missing what hanging targets are tied to)
--- RequestImap(1706275010) -- Round Table
--- RequestImap(-792944828) -- Round Table Top
--- RequestImap(-1836870707) -- Round Table Seats no light
--- RequestImap(1290371072) -- Seats and light for round table
--- RequestImap(-1880340209) -- Camp Fire, 3 stools, 2 sleeping bags beside Arthurs site
--- RequestImap(-2000080725) -- Chicken Coop
--- RequestImap(719147410) -- Blue Chair and Stool for gaming table
--- RequestImap(-989202374) -- Antlers on Big Center Tree
--- RequestImap(-1010466481) -- Supplies in Lean Tos
--- RequestImap(-1247551347) -- Broken Chest
--- RequestImap(1717489303) -- Three Lean Tos
--- RequestImap(1692451176) -- Lantern Game Table on a Post
--- RequestImap(220566669) --Lantern Game Table
--- RequestImap(-1045282549) -- White Animal Skin Rugs near sitting rock
--- RequestImap(2123887232) -- Fire pit near white skins
--- RequestImap(-809371454) -- Small barrel and table to Banjo
--- RequestImap(-436009554) -- Piece of Paper near Banjo
--- RequestImap(1997423854) -- Map near Paper
--- RequestImap(157361403) -- Large Dream Catcher
--- RequestImap(-814821283) -- Fishing Stuff
+RemoveImap(1802272784) -- Camp Extras (MUST LOAD FOR NORMAL SETUP)
+RemoveImap(2108368013) -- Tent frames for Dutch, Hosea and Arthurs Bed (Must Load for Normal Setup)
+RemoveImap(1402472902) -- Setting Up Camp v1
+RemoveImap(-1458944281) -- Setting Up Camp v2
+RemoveImap(1691578074) -- Log Fire Pit Trash Broken Barrels
+RemoveImap(810684093) -- Blue Trash Barrels on Beach
+RemoveImap(321594819) -- Broken Table on Beach
+RemoveImap(-385999832) -- Blue Trash Barrels on Beach
+RemoveImap(-1656481590) -- Target Shooting on Beach (Missing what hanging targets are tied to)
+RemoveImap(1706275010) -- Round Table
+RemoveImap(-792944828) -- Round Table Top
+RemoveImap(-1836870707) -- Round Table Seats no light
+RemoveImap(1290371072) -- Seats and light for round table
+RemoveImap(-1880340209) -- Camp Fire, 3 stools, 2 sleeping bags beside Arthurs site
+RemoveImap(-2000080725) -- Chicken Coop
+RemoveImap(719147410) -- Blue Chair and Stool for gaming table
+RemoveImap(-989202374) -- Antlers on Big Center Tree
+RemoveImap(-1010466481) -- Supplies in Lean Tos
+RemoveImap(-1247551347) -- Broken Chest
+RemoveImap(1717489303) -- Three Lean Tos
+RemoveImap(1692451176) -- Lantern Game Table on a Post
+RemoveImap(220566669) --Lantern Game Table
+RemoveImap(-1045282549) -- White Animal Skin Rugs near sitting rock
+RemoveImap(2123887232) -- Fire pit near white skins
+RemoveImap(-809371454) -- Small barrel and table to Banjo
+RemoveImap(-436009554) -- Piece of Paper near Banjo
+RemoveImap(1997423854) -- Map near Paper
+RemoveImap(157361403) -- Large Dream Catcher
+RemoveImap(-814821283) -- Fishing Stuff
 ------------------------------------- #### END OF RHODES STORY CAMP ####
 
 ------------------------------------- Rhodes Camp
--- RequestImap(-159557995) -- Two Tents, Wagon, Chairs
+RemoveImap(-159557995) -- Two Tents, Wagon, Chairs
 ------------------------------------- #### END OF RHODES CAMP ####
 
 ------------------------------------- Boat and Supplies Near Rhodes Camp
--- RequestImap(1733394134) -- Boat and Supplies 807 -1235 41
+RemoveImap(1733394134) -- Boat and Supplies 807 -1235 41
 ------------------------------------- #### END OF RHODES BOAT ####
 
 ------------------------------------- Rhodes Camp
--- RequestImap(1313890873) -- Small Camp in the Woods Just North of Dutch's Rhodes Base
+RemoveImap(1313890873) -- Small Camp in the Woods Just North of Dutch's Rhodes Base
 ------------------------------------- #### END OF RHODES CAMP ####
 
 ------------------------------------- Rhodes Cemetery
 RequestImap(-1366431554) -- Covers Large hole with grass patch
 RequestImap(-2144587490) -- Covers small plot hole with mound of dirt
--- RequestImap(-158824350) -- Dirt in Small Plot (visually can't see it)
+RemoveImap(-158824350) -- Dirt in Small Plot (visually can't see it)
 ------------------------------------- #### END OF RHODES CEMETERY ####
 
 ------------------------------------- Braithwaite Mansion
 --Mansion Interior
 RequestImap(1149195254)  --Brathwaite House Shell
--- RequestImap(-1643869063) -- House Burnt Down
+RemoveImap(-1643869063) -- House Burnt Down
 RequestImap(58066174)  -- Interior
--- RequestImap(1601599776)  -- House on fire Smoke (Smoke and Burning Sounds Only)
--- RequestImap(-437251660)  -- House of Fire Flames
+RemoveImap(1601599776)  -- House on fire Smoke (Smoke and Burning Sounds Only)
+RemoveImap(-437251660)  -- House of Fire Flames
 
 -- Mansion Exterior 
--- RequestImap(-1220264217)  -- Shurbs and Bushes
--- RequestImap(-1508467572) -- Ferns Bushes Weeds Overgrown (Use with Burned Down Version of House)
--- RequestImap(-990258606) -- Small Trees
+RemoveImap(-1220264217)  -- Shurbs and Bushes
+RemoveImap(-1508467572) -- Ferns Bushes Weeds Overgrown (Use with Burned Down Version of House)
+RemoveImap(-990258606) -- Small Trees
 RequestImap(1944013855) -- Add Open Shudders Upstairs Bed Room and Downstairs Library
--- RequestImap(-2137633069)  -- Shudders Close Upstairs Bedroom and Downstairs Library
+RemoveImap(-2137633069)  -- Shudders Close Upstairs Bedroom and Downstairs Library
 RequestImap(-880373663)  -- Front Balcony Lantern Added
 RequestImap(-70021332)  -- Adds Working tools and supplies to upper balcony
 ------------------------------------- #### END OF BRAITHWAITE MANSION ####
@@ -567,35 +721,35 @@ RequestImap(-70021332)  -- Adds Working tools and supplies to upper balcony
 ------------------------------------- Grey Estates
 RequestImap(-677977650) -- Normal Barn Frame
 RequestImap(702350293) -- Barn Interior
--- RequestImap(419559004) -- Burnt Barn Frame 1
+RemoveImap(419559004) -- Burnt Barn Frame 1
 RequestImap(1426715569) -- Adds Field Props
--- RequestImap(1284656212) -- Burning Structure
--- RequestImap(-1162161651) -- Fields on fire
--- RequestImap(557212279) -- Burnt Plants
--- RequestImap(1786931635) -- Burnt out fields
+RemoveImap(1284656212) -- Burning Structure
+RemoveImap(-1162161651) -- Fields on fire
+RemoveImap(557212279) -- Burnt Plants
+RemoveImap(1786931635) -- Burnt out fields
 RequestImap(26815048) -- Normal Fields
 RequestImap(-1229109520) -- Green Plants
 ------------------------------------- #### END OF GREY ESTATES ####
 
 ------------------------------------- Blackwater Town Hall
 RequestImap(-2082201137)  --Blackwater Ground Town Hall
-RequestImap(1343343014)  --Blackwater Town Hall Addons Construction
-RequestImap(739412171)  -- Two Boards in front of city hall (Goes with Town Hall Construction)
-RequestImap(-5339556)  --Bank Under Construction
--- RequestImap(1173561253) -- Tents Beside City Hall Near Trech
--- RequestImap(1470738186) -- Adds Pre-Construcion Ground (Ground does not mesh well with contrustion IPLs)
--- RequestImap(-1632348233) -- Adds Trees and Grass (DO NOT USE WITH CONSTRUCTION IPL, WILL MERGE VISUALS)
+RemoveImap(1343343014)  --Blackwater Town Hall Addons Construction
+RemoveImap(739412171)  -- Two Boards in front of city hall (Goes with Town Hall Construction)
+RemoveImap(-5339556)  --Bank Under Construction
+RemoveImap(1173561253) -- Tents Beside City Hall Near Trech
+RemoveImap(1470738186) -- Adds Pre-Construcion Ground (Ground does not mesh well with contrustion IPLs)
+RequestImap(-1632348233) -- Adds Trees and Grass (DO NOT USE WITH CONSTRUCTION IPL, WILL MERGE VISUALS)
 ------------------------------------- #### END OF BLACKWATER TOWN HALL ####
 
 ------------------------------------- First Camp - Winter Area -1346 2407 311
--- RequestImap(867231253)  -- Ground Spring Melt
--- RequestImap(1248111234) -- Ground Early Spring Melt 
--- RequestImap(474287981) -- Ground Standard Winter 
+RemoveImap(867231253)  -- Ground Spring Melt
+RemoveImap(1248111234) -- Ground Early Spring Melt 
+RemoveImap(474287981) -- Ground Standard Winter 
 RequestImap(-1331012521) -- Ground After Snowfall Winter 
--- RequestImap(-2119625926) -- Barrels and Crates
--- RequestImap(1113693078) -- Snow on Two Crates
--- RequestImap(660686456) -- Crates for use with Snow Cover Crates (FOR USE WITH Snow on Crates)
--- RequestImap(-8749224) -- Torches Boxes and Crates (DO NOT USE SNOW ON CRATES WITH THIS)
+RemoveImap(-2119625926) -- Barrels and Crates
+RemoveImap(1113693078) -- Snow on Two Crates
+RemoveImap(660686456) -- Crates for use with Snow Cover Crates (FOR USE WITH Snow on Crates)
+RemoveImap(-8749224) -- Torches Boxes and Crates (DO NOT USE SNOW ON CRATES WITH THIS)
 RequestImap(-1991237877) -- Boxes
 RequestImap(-1670453688) -- Broken Wagons
 RequestImap(-743781837) -- Fire in Pit
@@ -606,30 +760,30 @@ RequestImap(-1306375743) -- Forge Fire
 ------------------------------------- Farm House near Mining Town - -559 2686 319
 RequestImap(-338553155) -- Exterior House
 RequestImap(-1636879249) -- Normal Looking Interior
--- RequestImap(-323126593) -- Burned Out Interior
--- RequestImap(-889869458)  -- Debris
--- RequestImap(1590561203)  -- Flames
+RemoveImap(-323126593) -- Burned Out Interior
+RemoveImap(-889869458)  -- Debris
+RemoveImap(1590561203)  -- Flames
 RequestImap(-1106668087) -- Adds Wagon Wheel near Front Door
 RequestImap(2028590076) -- Cash Box Interior
 ------------------------------------- #### END OF FARM HOUSE ####
 
 ------------------------------------- Strawberry
--- RequestImap(-134556459) -- Doctors House Locked Door (No Interior) -1799 -428 158
+RemoveImap(-134556459) -- Doctors House Locked Door (No Interior) -1799 -428 158
 RequestImap(131323483)  -- Doctors House Interior and Unlocked Front Door
--- RequestImap(270920361) -- Crates on Doctors Porch 
+RemoveImap(270920361) -- Crates on Doctors Porch 
 
--- RequestImap(1892122519)-- Locked Door Micahs Gun House (No Interior) -1773 -431 154
+RemoveImap(1892122519)-- Locked Door Micahs Gun House (No Interior) -1773 -431 154
 RequestImap(-130638369) -- Micahs Gun House Interior with Unlocked Front Door (Upstairs does not work, other doors are locked)
 
 RequestImap(2137790641) -- Jail Cell Window Fixed
 RequestImap(1934919499) -- Jail Cell Window Fixed
 RequestImap(-515396642) -- Jail Cell Window Fixed
--- RequestImap(993595204) -- Window Debris
--- RequestImap(1291083725) -- Window Debris
+RemoveImap(993595204) -- Window Debris
+RemoveImap(1291083725) -- Window Debris
 ------------------------------------- #### END OF STRAWBERRY ####
 
 ----------------------- Saint Denis Doctor office
--- RequestImap(-473077489) -- Doors (fixes hole) no interior
+RemoveImap(-473077489) -- Doors (fixes hole) no interior
 RequestImap(619024057) -- full interior with doors
 ------------------------------------- #### END OF SAINT DENIS DOCTOR OFFICE ####
 
@@ -647,12 +801,12 @@ RequestImap(-723094901)
 
 
 ----------------------- Beechers field
--- RequestImap(1929454697) -- beechers field side rows of some medium crop
--- RequestImap(1649902358) -- beechers field side rows of some small crop
--- RequestImap(1864768904) -- beechers field crops in middle
--- RequestImap(938290967)  -- beechers field crops in middle
--- RequestImap(1169279648) -- beechers field crops in middle
--- RequestImap(-284612948) -- beechers field tilled field
+RemoveImap(1929454697) -- beechers field side rows of some medium crop
+RemoveImap(1649902358) -- beechers field side rows of some small crop
+RemoveImap(1864768904) -- beechers field crops in middle
+RemoveImap(938290967)  -- beechers field crops in middle
+RemoveImap(1169279648) -- beechers field crops in middle
+RemoveImap(-284612948) -- beechers field tilled field
 RequestImap(-1765152778) -- beechers field logs laying in 
 RequestImap(-2072231077) -- beechers field plants over area
 RequestImap(-1253110600) -- beechers field hole in ground fix
@@ -667,7 +821,7 @@ RequestImap(-928367655)
 RequestImap(890107948)
 RequestImap(1153046408)
 RequestImap(1634621556)
-RequestImap(-243627670)
+RemoveImap(-243627670)
 RequestImap(38567760)
 RequestImap(-1954278106)
 RequestImap(-947200121)
@@ -680,18 +834,18 @@ RequestImap(-262959893) -- ground
 RequestImap(-735136865) -- ground
 RequestImap(-868830916)
 RequestImap(764025611)
--- RequestImap(1802934313) --trees
--- RequestImap(607468222) --shrubs
--- RequestImap(2108112010) --trees
--- RequestImap(1208537422) --trees
--- RequestImap(361734047) -- trees
--- RequestImap(-1552951782) --trees
--- RequestImap(1391886974) -- plants
--- RequestImap(-1142569437) -- plants
--- RequestImap(474113610) -- plants
--- RequestImap(1298607560)
--- RequestImap(-297340751) -- small pines
-RequestImap(-1079295176)
+RemoveImap(1802934313) --trees
+RemoveImap(607468222) --shrubs
+RemoveImap(2108112010) --trees
+RemoveImap(1208537422) --trees
+RemoveImap(361734047) -- trees
+RemoveImap(-1552951782) --trees
+RemoveImap(1391886974) -- plants
+RemoveImap(-1142569437) -- plants
+RemoveImap(474113610) -- plants
+RemoveImap(1298607560)
+RemoveImap(-297340751) -- small pines
+RemoveImap(-1079295176)
 RequestImap(1271713904)
 RequestImap(1423681694)
 RequestImap(1293624693)
@@ -706,14 +860,14 @@ RequestImap(1221694281)
 RequestImap(1036815507)
 RequestImap(775893260)
 RequestImap(-329355129)
--- RequestImap(2117211184) --fence
--- RequestImap(-1042390616) -- barn interior
--- RequestImap(-118700196) --props outside
+RemoveImap(2117211184) --fence
+RemoveImap(-1042390616) -- barn interior
+RemoveImap(-118700196) --props outside
 RequestImap(991016631)
 RequestImap(57105576)
 RequestImap(238757788)
 RequestImap(927020127)
-RequestImap(1388161943)
+RemoveImap(1388161943)
 RequestImap(-7594117)
 RequestImap(-1680050035)
 RequestImap(41398635)
@@ -730,16 +884,16 @@ RequestImap(1053919002)
 
 ----------------------- Fantana Theatre Saint Denis
 RequestImap(-1667265438) -- signs on building 1
---RequestImap(175578406)  -- signs on building 2
---RequestImap(1137646647) -- fantana doors (fills hole)
+RemoveImap(175578406)  -- signs on building 2
+RequestImap(1137646647) -- fantana doors (fills hole)
 RequestImap(-898081380) -- fantana theatre interior
--- RequestImap(-468635897) -- sign option 1 out front (advertisement)
--- RequestImap(-771786794) -- sign option 2 picture
--- RequestImap(-626641013) -- sign option 3 scull
--- RequestImap(1088045886) -- sign option 4 (advertisement)
--- RequestImap(-1678761663) -- sign option 5 (advertisement)
--- RequestImap(535384482) -- sign option 6 (advertisement)
--- RequestImap(1724413302) -- sign option 7 (advertisement)
+RemoveImap(-468635897) -- sign option 1 out front (advertisement)
+RemoveImap(-771786794) -- sign option 2 picture
+RemoveImap(-626641013) -- sign option 3 scull
+RemoveImap(1088045886) -- sign option 4 (advertisement)
+RemoveImap(-1678761663) -- sign option 5 (advertisement)
+RemoveImap(535384482) -- sign option 6 (advertisement)
+RemoveImap(1724413302) -- sign option 7 (advertisement)
 RequestImap(-1267247536) -- sign option 8 (advertisement)
 ------------------------------------- #### END Fantana Theatre Saint Denis ####
 
@@ -748,7 +902,7 @@ RequestImap(350100475) --Cellar doors
 ------------------------------------- #### END Prison ####
 
 ----------------------- Hotel Chevalier
--- RequestImap(481139295)  -- scaffolding and grand opening soon sing
+RemoveImap(481139295)  -- scaffolding and grand opening soon sing
 RequestImap(-274080837) -- fixed hole in wall
 ------------------------------------- #### END Hotel Chevalier ####
 
@@ -757,104 +911,81 @@ RequestImap(-787042507)
 ------------------------------------- #### END House interior ####
 
 ----------------------- Patch hole in building -1860, -1722, 109.25
-RequestImap(-1696865897)
+RemoveImap(-1696865897)
 ------------------------------------- #### END Patch hole in building ####
 
 ----------------------- Missing cabin -2376.0, -1590.96, 156.0
 
 RequestImap(-1387511711) -- shell
 RequestImap(1901132483) -- interior
--- RequestImap(-2082345587) -- onfire
--- RequestImap(-715865581) -- fallen tree
+RemoveImap(-2082345587) -- onfire
+RemoveImap(-715865581) -- fallen tree
 ------------------------------------- #### END Missing cabin ####
 
--- RequestImap(1879779330)  -- sign outside tent version 1
--- RequestImap(1104143966)  -- sign outside tent version 2
--- RequestImap(1027093524)  -- sign outside tent version 3
+RemoveImap(1879779330)  -- sign outside tent version 1
+RemoveImap(1104143966)  -- sign outside tent version 2
+RemoveImap(1027093524)  -- sign outside tent version 3
 RequestImap(-1617847332) -- sign outside tent version 4
--- RequestImap(-763477089)  -- partial door flap open
--- RequestImap(317070801)   -- full closed flap
+RemoveImap(-763477089)  -- partial door flap open
+RemoveImap(317070801)   -- full closed flap
 ------------------------------------- #### END Traveling Magic Lantern Show -- Valentine --####
 
 ----------------------------------------- ### Armadillo Fires ### Southwest
--- RequestImap(-1745210725) -- SW add debris
--- RequestImap(-1096712211) -- SW add debris
--- RequestImap(-1941005496) -- SW add debris
--- RequestImap(1898267848)  -- SW add ember
--- RequestImap(974280355)   -- SW add ember
--- RequestImap(1756181464)  -- SW add ember
--- RequestImap(-816857367)  -- SW add ember
--- RequestImap(-72482077)   -- SW add flame
--- RequestImap(-1122265410) -- SW add flame
--- RequestImap(-935952905)  -- SW add flame
--- RequestImap(1309948033)  -- SW add flame
--- RequestImap(1941336822)  -- SW add flame
--- RequestImap(712371053)   -- SW add flame
--- RequestImap(1710282603)  -- SW add flame
--- RequestImap(574303518)   -- SW add charred ground
--- RequestImap(-752772715)  -- SW add smoke
--- RequestImap(503623514)   -- SW add smoke
--- RequestImap(-407026996)  -- SW add smoke
+RemoveImap(-1745210725) -- SW add debris
+RemoveImap(-1096712211) -- SW add debris
+RemoveImap(-1941005496) -- SW add debris
+RemoveImap(1898267848)  -- SW add ember
+RemoveImap(974280355)   -- SW add ember
+RemoveImap(1756181464)  -- SW add ember
+RemoveImap(-816857367)  -- SW add ember
+RemoveImap(-72482077)   -- SW add flame
+RemoveImap(-1122265410) -- SW add flame
+RemoveImap(-935952905)  -- SW add flame
+RemoveImap(1309948033)  -- SW add flame
+RemoveImap(1941336822)  -- SW add flame
+RemoveImap(712371053)   -- SW add flame
+RemoveImap(1710282603)  -- SW add flame
+RemoveImap(574303518)   -- SW add charred ground
+RemoveImap(-752772715)  -- SW add smoke
+RemoveImap(503623514)   -- SW add smoke
+RemoveImap(-407026996)  -- SW add smoke
 ----------------------------------------- ### Armadillo Fires ### Northeast
--- RequestImap(-1029093195) -- NE add debris
--- RequestImap(-1325390493) -- NE add debris
--- RequestImap(-1622834706) -- NE add debris?
--- RequestImap(257582350)   -- NE add ember
--- RequestImap(-39730787)   -- NE add ember
--- RequestImap(-1438901569) -- NE add ember
--- RequestImap(-772691681)  -- NE add flame
--- RequestImap(-2110850686) -- NE add flame
--- RequestImap(-1142062162) -- NE add Flame
--- RequestImap(32078073)    -- NE add flame
--- RequestImap(1011350990)  -- NE add flame
--- RequestImap(1007204499)  -- NE add flame
--- RequestImap(705321299)   -- NE add flame
--- RequestImap(34346755)    -- NE smoke
--- RequestImap(482102371)   -- NE smoke
--- RequestImap(-502343927)  -- NE smoke
--- RequestImap(112916013)   -- NE add charred ground
+RemoveImap(-1029093195) -- NE add debris
+RemoveImap(-1325390493) -- NE add debris
+RemoveImap(-1622834706) -- NE add debris?
+RemoveImap(257582350)   -- NE add ember
+RemoveImap(-39730787)   -- NE add ember
+RemoveImap(-1438901569) -- NE add ember
+RemoveImap(-772691681)  -- NE add flame
+RemoveImap(-2110850686) -- NE add flame
+RemoveImap(-1142062162) -- NE add Flame
+RemoveImap(32078073)    -- NE add flame
+RemoveImap(1011350990)  -- NE add flame
+RemoveImap(1007204499)  -- NE add flame
+RemoveImap(705321299)   -- NE add flame
+RemoveImap(34346755)    -- NE smoke
+RemoveImap(482102371)   -- NE smoke
+RemoveImap(-502343927)  -- NE smoke
+RemoveImap(112916013)   -- NE add charred ground
 ----------------------------------------- ### Armadillo Fires ### Southeast
--- RequestImap(-1725439174) -- SE add ember
--- RequestImap(-1443390498) -- SE add debris
--- RequestImap(689576469)   -- SE add debris
--- RequestImap(-1750010031) -- SE add debris
--- RequestImap(1857654366)  -- SE add ember
--- RequestImap(2095655613)  -- SE add ember
--- RequestImap(1049317994)  -- SE add flame
--- RequestImap(-820561187)  -- SE add flame
--- RequestImap(-280121448)  -- SE add flame
--- RequestImap(-1268841107) -- SE add flame
--- RequestImap(-279038963)  -- SE add flame
--- RequestImap(2087785010)  -- SE add flame
--- RequestImap(161441935)   -- SE add flame
--- RequestImap(-1603458673) -- SE add charred ground
--- RequestImap(1065585604)  -- SE smoke
--- RequestImap(-175048740)  -- SE smoke
--- RequestImap(-482127039)  -- SE smoke
+RemoveImap(-1725439174) -- SE add ember
+RemoveImap(-1443390498) -- SE add debris
+RemoveImap(689576469)   -- SE add debris
+RemoveImap(-1750010031) -- SE add debris
+RemoveImap(1857654366)  -- SE add ember
+RemoveImap(2095655613)  -- SE add ember
+RemoveImap(1049317994)  -- SE add flame
+RemoveImap(-820561187)  -- SE add flame
+RemoveImap(-280121448)  -- SE add flame
+RemoveImap(-1268841107) -- SE add flame
+RemoveImap(-279038963)  -- SE add flame
+RemoveImap(2087785010)  -- SE add flame
+RemoveImap(161441935)   -- SE add flame
+RemoveImap(-1603458673) -- SE add charred ground
+RemoveImap(1065585604)  -- SE smoke
+RemoveImap(-175048740)  -- SE smoke
+RemoveImap(-482127039)  -- SE smoke
 ----------------------------------------- ### END ARMADILLO FIRES ###
-
---------------------- Hole/cabin east of emerald station
-RequestImap(-574996782) -- house shell/front enterence
-RequestImap(1169511062) -- house interior
-RequestImap(-1266106154) -- fence border and wood pile outside house
-RequestImap(-1377975054) -- ground trail to house
--- RequestImap(-165202905) -- green over hole (no trail)
--- RequestImap(897624424) -- grass over hole
--- RequestImap(-1327148782) -- grass over hole
--- RequestImap(-1965378386) -- grass over hole
-------------------------------------- #### END Hole/cabin east of emerald station --####
-
---------------------- Valentine extras
-RequestImap(886997475) -- bounty board
-RequestImap(325677491) --  white sign gunshop
-RequestImap(1936501508) -- big old sign gunshop
-RequestImap(-2083943324) -- debris infront of liqour
-RequestImap(610256856) -- debris and remodle next to liqour
-RequestImap(1804593020) -- barrels on sheriff step
-RequestImap(-1905652203) -- bench infront of gunshop
-RequestImap(2470511) -- box and stool next to gun shop
-------------------------------------- #### END Valentine extras --####
-
 RequestImap(666617953)
 RequestImap(-1892595931) 
 RequestImap(-784156210)
@@ -863,52 +994,60 @@ RequestImap(-1000738568)
 RequestImap(-991619789)
 RequestImap(-799526632)
 RequestImap(1003623269)
+RemoveImap(1804593020)
 RequestImap(1325716092)
 RequestImap(-1049500949)
+RequestImap(-1905652203)
+RequestImap(2470511)
 RequestImap(951314072)
-RequestImap(-1878882174)
-RequestImap(724436573)
+RemoveImap(-1878882174)
+RemoveImap(724436573)
 RequestImap(-1744253204)
 RequestImap(-2009766528)
 RequestImap(-1781246069)
-RequestImap(-159723514)
+RequestImap(610256856)
+RemoveImap(-2083943324)
+RemoveImap(-159723514)
 RequestImap(-1801047945)
-RequestImap(-590227673)
-RequestImap(1823159188)
+RemoveImap(-590227673)
+RequestImap(1936501508)
+RequestImap(325677491)
+RemoveImap(1823159188)
 RequestImap(-407068688)
 RequestImap(1552753100)
-RequestImap(1548242606)
+RequestImap(886997475)
+RemoveImap(1548242606)
 RequestImap(-555917871)
 RequestImap(1777348822)
 RequestImap(-1824080033)
 RequestImap(1460466036)
 RequestImap(-1279036865)
-RequestImap(-1818498296)
+RemoveImap(-1818498296)
 RequestImap(116162819)
 RequestImap(588746212)
-RequestImap(-1593160175)
-RequestImap(-2040493861)
-RequestImap(-1382265257)
+RemoveImap(-1593160175)
+RemoveImap(-2040493861)
+RemoveImap(-1382265257)
 RequestImap(-508205317)
-RequestImap(-232598845)
+RemoveImap(-232598845)
 RequestImap(1497923922)
 RequestImap(-1069586228)
 RequestImap(-1816233372)
 RequestImap(-1773409329)
 RequestImap(-688744902)
-RequestImap(1987335384)
-RequestImap(-1149736196)
+RemoveImap(1987335384)
+RemoveImap(-1149736196)
 RequestImap(-983957271)
-RequestImap(427220750)
+RemoveImap(427220750)
 RequestImap(-1926787493)
-RequestImap(1840600379)
-RequestImap(2136811572)
+RemoveImap(1840600379)
+RemoveImap(2136811572)
 RequestImap(1332067900)
 RequestImap(-1118337851)
 RequestImap(1236490949)
 RequestImap(-1701626270)
 RequestImap(-557964826)
-RequestImap(603871447)
+RemoveImap(603871447)
 RequestImap(-1569624057)
 RequestImap(-378395191)
 RequestImap(273551835)
@@ -981,7 +1120,7 @@ RequestImap(1739445890)
 RequestImap(-817060178)
 RequestImap(-737812908)
 RequestImap(389213738)
-RequestImap(2126897368)
+RemoveImap(2126897368)
 RequestImap(1314976319)
 RequestImap(-780302065)
 RequestImap(-1226654727)
@@ -1025,7 +1164,7 @@ RequestImap(416759610)
 RequestImap(1916362667)
 RequestImap(-76573194)
 RequestImap(391171508)
-RequestImap(827906606)
+RemoveImap(827906606)
 RequestImap(-169261100)
 RequestImap(1912754336)
 RequestImap(292362182)
@@ -1228,17 +1367,17 @@ RequestImap(-584714922)
 RequestImap(-1513941904)
 RequestImap(1489268640)
 RequestImap(-1344255754)
-RequestImap(739805687)
+RemoveImap(739805687)
 RequestImap(-395621323)
 RequestImap(1638937672)
-RequestImap(661576070)
+RemoveImap(661576070)
 RequestImap(795060201)
-RequestImap(-198004806)
+RemoveImap(-198004806)
 RequestImap(-924329535)
 RequestImap(-1815023148)
-RequestImap(-537757838)
+RemoveImap(-537757838)
 RequestImap(1575123584)
-RequestImap(-710506752)
+RemoveImap(-710506752)
 RequestImap(-2117963426)
 RequestImap(-419935200)
 RequestImap(-1849681615)
@@ -1296,11 +1435,11 @@ RequestImap(-1766409506)
 RequestImap(-724913398)
 RequestImap(-1950049852)
 RequestImap(-1786365097)
-RequestImap(-1221875648)
-RequestImap(-833857740)
+RemoveImap(-1221875648)
+RemoveImap(-833857740)
 RequestImap(1929440211)
-RequestImap(1354870005)
-RequestImap(-1718055184)
+RemoveImap(1354870005)
+RemoveImap(-1718055184)
 RequestImap(-1499162505)
 RequestImap(-1832103801)
 RequestImap(-262759679)
@@ -1322,7 +1461,7 @@ RequestImap(-2042475701)
 RequestImap(-198101911)
 RequestImap(1358414393)
 RequestImap(672931117)
-RequestImap(1182205549)
+RemoveImap(1182205549) ---Dakota River Coach Box
 RequestImap(205214733)
 RequestImap(-78801135)
 RequestImap(-846371468)
@@ -1337,7 +1476,7 @@ RequestImap(-1316886711)
 RequestImap(-37875204)
 RequestImap(258104717)
 RequestImap(-76700394)
-RequestImap(1614255891)
+RemoveImap(1614255891)
 RequestImap(1492183352)
 RequestImap(1260721433)
 RequestImap(642301973)
@@ -1345,8 +1484,8 @@ RequestImap(-622475043)
 RequestImap(1138093977)
 RequestImap(339111695)
 RequestImap(-518858513)
-RequestImap(1274804496)
-RequestImap(1597665303)
+RequestImap(1274804496)--Oil Factory Exterior
+RequestImap(1597665303)--Oil Factory Interior
 RequestImap(918349577)
 RequestImap(1596089211)
 RequestImap(-711890106)
@@ -1359,16 +1498,15 @@ RequestImap(-528294019)
 RequestImap(-943891161)
 RequestImap(-914406102)
 RequestImap(1855900423)
-RequestImap(73781828)
 RequestImap(-391567710)
-RequestImap(-1809571159)
+RemoveImap(-1809571159)
 RequestImap(-1052023588)
 RequestImap(944314155)
 RequestImap(1531008020)
 RequestImap(-745087561)
 RequestImap(1324480450)
-RequestImap(23211744)
-RequestImap(1672215059)
+RemoveImap(23211744)--- Fallen Trees at cumberland forest
+RemoveImap(1672215059) --- Fallen Trees at cumberland forest
 RequestImap(604668055)
 RequestImap(-1177027698)
 RequestImap(1708195603)
@@ -1379,9 +1517,9 @@ RequestImap(-432370325)
 RequestImap(1624069429)
 RequestImap(2075691867)
 RequestImap(-2106432785)
-RequestImap(1903595390)
-RequestImap(-24665995)
-RequestImap(1651555923)
+RemoveImap(1903595390)
+RemoveImap(-24665995)
+RemoveImap(1651555923)
 RequestImap(-1132206051)
 RequestImap(-1465375517)
 RequestImap(-1233192626)
@@ -1419,7 +1557,7 @@ RequestImap(-882460089)
 RequestImap(-1835067413)
 RequestImap(-1392150519)
 RequestImap(-389510791)
-RequestImap(-910880980)
+RemoveImap(-910880980)
 RequestImap(382484708)
 RequestImap(-411006854)
 RequestImap(1133453602)
@@ -1428,20 +1566,21 @@ RequestImap(1968676233)
 RequestImap(2112594812)
 RequestImap(1750312025)
 RequestImap(-1111286486)
-RequestImap(-1625703283)
+RemoveImap(-1625703283)
 RequestImap(563581773)
 RequestImap(1628851253)
 RequestImap(746475990)
-RequestImap(-753844687)
-RequestImap(-1045062790)
-RequestImap(-1272426249)
-RequestImap(334535013)
+RemoveImap(-753844687)
+RemoveImap(-1045062790)
+RemoveImap(247969883)
+RemoveImap(-1272426249)
+RemoveImap(334535013)--Rubbish in front of Annesburg Mine
 RequestImap(582879672)
 RequestImap(1713454259)
 RequestImap(-1417469821)
 RequestImap(1798244378)
 RequestImap(-1665620584)
-RequestImap(-537740003)
+RemoveImap(-537740003)--Carts and junk in Annesburg
 RequestImap(-1584316325)
 RequestImap(-1085363933)
 RequestImap(1517736440)
@@ -1467,7 +1606,10 @@ RequestImap(-1369880946)
 RequestImap(292369320)
 RequestImap(539566709)
 RequestImap(883579956)
+RequestImap(-574996782)
+RequestImap(1169511062)
 RequestImap(-2111718052)
+RequestImap(-1266106154)
 RequestImap(1192526031)
 RequestImap(1091543855)
 RequestImap(-952533419)
@@ -1476,18 +1618,18 @@ RequestImap(2123010634)
 RequestImap(-1081335485)
 RequestImap(-1176501741)
 RequestImap(-2035177903)
-RequestImap(-1147247388)
+RemoveImap(-1147247388)
 RequestImap(-1436313374)
 RequestImap(-445068262)
 RequestImap(334010167)
 RequestImap(-676881895)
 RequestImap(1331438832)
 RequestImap(376665102)
-RequestImap(-928815382)
-RequestImap(-299265919)
+RemoveImap(-928815382)
+RemoveImap(-299265919)
 RequestImap(883152450)
-RequestImap(1736837788)
-RequestImap(1814624585)
+RemoveImap(1736837788)
+RemoveImap(1814624585)
 RequestImap(480644817)
 RequestImap(-584332967)
 RequestImap(-392430949)
@@ -1524,11 +1666,11 @@ RequestImap(1525054056)
 RequestImap(749968899)
 RequestImap(-186143124)
 RequestImap(-2043326480)
-RequestImap(1924458218)
+RemoveImap(1924458218)
 RequestImap(966418260)
 RequestImap(-432154242)
 RequestImap(500829173)
-RequestImap(77337110)
+RemoveImap(77337110)
 RequestImap(2029194243)
 RequestImap(-1125782227)
 RequestImap(-372970556)
@@ -1548,10 +1690,10 @@ RequestImap(118201723)
 RequestImap(458453080)
 RequestImap(-1385360243)
 RequestImap(-1288790000)
-RequestImap(758066107)
+RemoveImap(758066107)
 RequestImap(-1995054197)
-RequestImap(-1623126047)
-RequestImap(1943484686)
+RemoveImap(-1623126047) ----Monto Rest Lumber House, causes glitching
+RemoveImap(1943484686) --Monto Rest Lumber House, causes glitching
 RequestImap(2056603274)
 RequestImap(898257133)
 RequestImap(-380287375)
@@ -1564,45 +1706,45 @@ RequestImap(870580095)
 RequestImap(504746979)
 RequestImap(138913863)
 RequestImap(-90108678)
-RequestImap(1258244391)
-RequestImap(-501793326)
-RequestImap(1490756544)
-RequestImap(-753454183)
-RequestImap(-1854368742)
-RequestImap(466168676)
-RequestImap(-1123141803)
-RequestImap(1858796535)
-RequestImap(411846009)
-RequestImap(-393583941)
-RequestImap(-2122914678)
+RemoveImap(1258244391)
+RemoveImap(-501793326)
+RemoveImap(1490756544)
+RemoveImap(-753454183)
+RemoveImap(-1854368742)
+RemoveImap(466168676) ---Tents in BlackWaster Near Candy Shop
+RemoveImap(-1123141803)
+RemoveImap(1858796535)
+RemoveImap(411846009)
+RemoveImap(-393583941)
+RemoveImap(-2122914678)
 RequestImap(-518004776)
-RequestImap(917434281)
-RequestImap(-1859373348)
+RemoveImap(917434281)
+RemoveImap(-1859373348)
 RequestImap(-442857872)
 RequestImap(1251358153)
 RequestImap(872406077)
-RequestImap(1471226731)
-RequestImap(-1471527776)
-RequestImap(1867048850)
-RequestImap(-1490939730)
-RequestImap(765141292)
+RemoveImap(1471226731)
+RemoveImap(-1471527776) ---UNKNOWN WEIRD
+RemoveImap(1867048850)
+RemoveImap(-1490939730)
+RemoveImap(765141292)
 RequestImap(1305415261)
-RequestImap(271879652)
-RequestImap(-2045964586)
+RemoveImap(271879652)
+RemoveImap(-2045964586)
 RequestImap(-1926989471)
-RequestImap(-948615309)
-RequestImap(66382979)
-RequestImap(-1393565861)
-RequestImap(-586415580)
-RequestImap(2096286828)
-RequestImap(-1960936248)
-RequestImap(1251859782)
-RequestImap(1520095560)
-RequestImap(994786977)
-RequestImap(409171062)
-RequestImap(998966461)
-RequestImap(-1381094502)
-RequestImap(-665831452)
+RemoveImap(-948615309)
+RemoveImap(66382979)
+RemoveImap(-1393565861)
+RemoveImap(-586415580)
+RemoveImap(2096286828)
+RemoveImap(-1960936248)
+RemoveImap(1251859782)
+RemoveImap(1520095560)
+RemoveImap(994786977)
+RemoveImap(409171062)
+RemoveImap(998966461)
+RemoveImap(-1381094502)
+RemoveImap(-665831452)
 RequestImap(1454866069)
 RequestImap(-1877706739)
 RequestImap(437660121)
@@ -1841,11 +1983,11 @@ RequestImap(1465430690)
 RequestImap(716331350)
 RequestImap(1734859244)
 RequestImap(-750963311)
-RequestImap(-886310806)
+RemoveImap(-886310806)
 RequestImap(1926336063)
-RequestImap(-800534102)
+RemoveImap(-800534102)
 RequestImap(1648013752)
-RequestImap(-753535900)
+RemoveImap(-753535900)
 RequestImap(-693870347)
 RequestImap(-877653131)
 RequestImap(1335714585)
@@ -1906,7 +2048,7 @@ RequestImap(1883534212)
 RequestImap(209919309)
 RequestImap(-166639526)
 RequestImap(1915768280)
-RequestImap(-105525329)
+RemoveImap(-105525329)
 RequestImap(612040624)
 RequestImap(-1176903838)
 RequestImap(-1389718656)
@@ -1914,124 +2056,125 @@ RequestImap(-958046355)
 RequestImap(2107657444)
 RequestImap(-2023595928)
 RequestImap(-759698431)
-RequestImap(-406964748)
+RemoveImap(-406964748)
 RequestImap(481636996)
 RequestImap(-1671953459)
-RequestImap(910941329)
+RemoveImap(910941329)
 RequestImap(518127510)
-RequestImap(758684739)
-RequestImap(-661825463)
+RequestImap(1817836578)
+RemoveImap(758684739)
+RemoveImap(-661825463)
 RequestImap(1343484786)
-RequestImap(1033721560)
-RequestImap(1989074279)
+RemoveImap(1033721560)
+RemoveImap(1989074279)
 RequestImap(349486662)
 RequestImap(1603294144)
 RequestImap(-1754425204)
 RequestImap(-1036501021)
 RequestImap(1871051363)
 RequestImap(945502524)
-RequestImap(-1436188587)
-RequestImap(-468702164)
+RemoveImap(-1436188587)
+RemoveImap(-468702164)
 RequestImap(-687151759)
-RequestImap(1882605165)
+RemoveImap(1882605165)
 RequestImap(869642051)
 RequestImap(-184821200)
 RequestImap(-490818122)
 RequestImap(1907352897)
 RequestImap(1700234797)
 RequestImap(-708550718)
-RequestImap(-1377139506)
+RemoveImap(-1377139506)
 RequestImap(767293177)
-RequestImap(-1739900853)
-RequestImap(-646014955)
-RequestImap(159921796)
-RequestImap(-2014929982)
-RequestImap(-1070054959)
-RequestImap(-558920293)
-RequestImap(-872749010)
-RequestImap(-1924933663)
-RequestImap(-54044677)
-RequestImap(2116967107)
-RequestImap(1721842998)
-RequestImap(92080743)
-RequestImap(-1619008260)
-RequestImap(964593693)
+RemoveImap(-1739900853)
+RemoveImap(-646014955)
+RemoveImap(159921796)
+RemoveImap(-2014929982)
+RemoveImap(-1070054959)
+RemoveImap(-558920293)
+RemoveImap(-872749010)
+RemoveImap(-1924933663)
+RemoveImap(-54044677)
+RemoveImap(2116967107)
+RemoveImap(1721842998)
+RemoveImap(92080743)
+RemoveImap(-1619008260)
+RemoveImap(964593693)
 RequestImap(-882188392)
-RequestImap(773757120)
-RequestImap(-1618574684)
-RequestImap(827269092)
-RequestImap(1706509616)
-RequestImap(-90228526)
+RemoveImap(773757120)
+RemoveImap(-1618574684)
+RemoveImap(827269092)
+RemoveImap(1706509616)
+RemoveImap(-90228526)
 RequestImap(-520163372)
-RequestImap(1265596420)
-RequestImap(-1388202749)
-RequestImap(54661488)
+RemoveImap(1265596420)
+RemoveImap(-1388202749)
+RemoveImap(54661488)
 RequestImap(1079213989)
-RequestImap(-621187540)
-RequestImap(-638481378)
-RequestImap(1833824812)
-RequestImap(1865439665)
-RequestImap(2036492390)
-RequestImap(-1062918766)
-RequestImap(-555683060)
-RequestImap(-415514741)
-RequestImap(809554858)
-RequestImap(1810083187)
-RequestImap(-412827149)
-RequestImap(414622870)
-RequestImap(923572416)
-RequestImap(67198036)
-RequestImap(-1130111983)
-RequestImap(557551306)
-RequestImap(1674493966)
-RequestImap(-1115840558)
-RequestImap(-1910456812)
-RequestImap(-960337247)
-RequestImap(1155877447)
-RequestImap(928165666)
-RequestImap(2048341166)
-RequestImap(-1015572514)
-RequestImap(-785304751)
-RequestImap(1448230281)
-RequestImap(1687083522)
-RequestImap(-2053999329)
-RequestImap(2017155697)
-RequestImap(1802911979)
-RequestImap(1567139024)
-RequestImap(-1037436240)
-RequestImap(-1747868160)
-RequestImap(1588507579)
-RequestImap(1396808929)
-RequestImap(-1392451243)
+RemoveImap(-621187540)
+RemoveImap(-638481378)
+RemoveImap(1833824812)
+RemoveImap(1865439665)
+RemoveImap(2036492390)
+RemoveImap(-1062918766)
+RemoveImap(-555683060)
+RemoveImap(-415514741)
+RemoveImap(809554858)
+RemoveImap(1810083187)
+RemoveImap(-412827149)
+RemoveImap(414622870)
+RemoveImap(923572416)
+RemoveImap(67198036)
+RemoveImap(-1130111983)
+RemoveImap(557551306)
+RemoveImap(1674493966)
+RemoveImap(-1115840558)
+RemoveImap(-1910456812)
+RemoveImap(-960337247)
+RemoveImap(1155877447)
+RemoveImap(928165666)
+RemoveImap(2048341166)
+RemoveImap(-1015572514)
+RemoveImap(-785304751)
+RemoveImap(1448230281)
+RemoveImap(1687083522)
+RemoveImap(-2053999329)
+RemoveImap(2017155697)
+RemoveImap(1802911979)
+RemoveImap(1567139024)
+RemoveImap(-1037436240)
+RemoveImap(-1747868160)
+RemoveImap(1588507579)
+RemoveImap(1396808929)
+RemoveImap(-1392451243)
 RequestImap(2061467757)
-RequestImap(-1828030290)
-RequestImap(-2147051362)
-RequestImap(-997495998)
+RemoveImap(-1828030290)
+RemoveImap(-2147051362)
+RemoveImap(-997495998)
 RequestImap(266022415)
-RequestImap(-414377604)
-RequestImap(-109593135)
-RequestImap(990134505)
-RequestImap(1279910772)
-RequestImap(1677041346)
-RequestImap(1936473519)
-RequestImap(1956790299)
-RequestImap(-2029001482)
-RequestImap(-538645000)
-RequestImap(-789852154)
-RequestImap(-1003800955)
-RequestImap(-1250617063)
-RequestImap(495480888)
-RequestImap(884576413)
-RequestImap(778703691)
-RequestImap(514406510)
-RequestImap(-421730990)
-RequestImap(-134624703)
-RequestImap(2004706822)
-RequestImap(-910918420)
-RequestImap(-327708229)
-RequestImap(1048845581)
-RequestImap(-1535722316)
-RequestImap(1547994518)
+RemoveImap(-414377604)
+RemoveImap(-109593135)
+RemoveImap(990134505)
+RemoveImap(1279910772)
+RemoveImap(1677041346)
+RemoveImap(1936473519)
+RemoveImap(1956790299)
+RemoveImap(-2029001482)
+RemoveImap(-538645000)
+RemoveImap(-789852154)
+RemoveImap(-1003800955)
+RemoveImap(-1250617063)
+RemoveImap(495480888)
+RemoveImap(884576413)
+RemoveImap(778703691)
+RemoveImap(514406510)
+RemoveImap(-421730990)
+RemoveImap(-134624703)
+RemoveImap(2004706822)
+RemoveImap(-910918420)
+RemoveImap(-327708229)
+RemoveImap(1048845581)
+RemoveImap(-1535722316)
+RemoveImap(1547994518)
 RequestImap(-1276109918)
 RequestImap(-1386423483)
 RequestImap(-1331593143)
@@ -2052,7 +2195,7 @@ RequestImap(2119466214)
 RequestImap(1812453453)
 RequestImap(1393010249)
 RequestImap(-1799943886)
-RequestImap(45121961)
+RemoveImap(45121961)  --Dakota River Lockbox Crash
 RequestImap(1949854427)
 RequestImap(580700069)
 RequestImap(1347068672)
@@ -2063,64 +2206,64 @@ RequestImap(881979872)
 RequestImap(1157695860)
 RequestImap(1859948183)
 RequestImap(-1688366042)
-RequestImap(-929277449)
+RemoveImap(-929277449)
 RequestImap(-801609437)
-RequestImap(-278745837)
-RequestImap(-41173958)
-RequestImap(1160690623)
-RequestImap(-660075384)
-RequestImap(1547403545)
-RequestImap(-775951892)
-RequestImap(808576710)
-RequestImap(149553684)
-RequestImap(137316925)
+RemoveImap(-278745837)
+RemoveImap(-41173958)
+RemoveImap(1160690623)
+RemoveImap(-660075384)
+RemoveImap(1547403545)
+RemoveImap(-775951892)
+RemoveImap(808576710)
+RemoveImap(149553684)
+RemoveImap(137316925)
 RequestImap(1431947993)
 RequestImap(1017355491)
-RequestImap(-920505696)
-RequestImap(-596723840)
-RequestImap(-1762770596)
-RequestImap(-1026473536)
-RequestImap(-516683274)
+RemoveImap(-920505696)
+RemoveImap(-596723840)
+RemoveImap(-1762770596)
+RemoveImap(-1026473536)
+RemoveImap(-516683274)
 RequestImap(-1004522372)
-RequestImap(281772765)
-RequestImap(-2084311522)
-RequestImap(489834626)
-RequestImap(-1360840312)
+RemoveImap(281772765)
+RemoveImap(-2084311522)
+RemoveImap(489834626)
+RemoveImap(-1360840312)
 RequestImap(1628286919)
 RequestImap(-704461521)
-RequestImap(1082980257)
-RequestImap(-1725465949)
-RequestImap(1821956151)
-RequestImap(-1993960878)
-RequestImap(204868257)
-RequestImap(432272547)
+RemoveImap(1082980257)
+RemoveImap(-1725465949)
+RemoveImap(1821956151)
+RemoveImap(-1993960878)
+RemoveImap(204868257)
+RemoveImap(432272547)
 RequestImap(1895127686)
 RequestImap(1461266126)
-RequestImap(-1473336090)
+RemoveImap(-1473336090)
 RequestImap(-1490034522)
-RequestImap(-205116461)
+RemoveImap(-205116461)
 RequestImap(-1013403664)
-RequestImap(-670748311)
-RequestImap(-2124415277)
-RequestImap(-473077489)
+RemoveImap(-670748311)
+RemoveImap(-2124415277)
+RemoveImap(-473077489)
 RequestImap(619024057)
-RequestImap(-836433697)
-RequestImap(-494733971)
-RequestImap(490883533)
-RequestImap(752665876)
-RequestImap(1136457806)
-RequestImap(-342806042)
-RequestImap(1255880931)
+RemoveImap(-836433697)
+RemoveImap(-494733971)
+RemoveImap(490883533)
+RemoveImap(752665876)
+RemoveImap(1136457806)
+RemoveImap(-342806042)
+RemoveImap(1255880931)
 RequestImap(1676972066)
-RequestImap(-643411908)
-RequestImap(-1901860833)
-RequestImap(-1225383143)
-RequestImap(206289712)
-RequestImap(1405627586)
-RequestImap(-1889108254)
-RequestImap(-1583923165)
-RequestImap(1726243396)
-RequestImap(96746001)
+RemoveImap(-643411908)
+RemoveImap(-1901860833)
+RemoveImap(-1225383143)
+RemoveImap(206289712)
+RemoveImap(1405627586)
+RemoveImap(-1889108254)
+RemoveImap(-1583923165)
+RemoveImap(1726243396)
+RemoveImap(96746001)
 RequestImap(1871261290)
 RequestImap(1767170589)
 RequestImap(396094389)
@@ -2146,31 +2289,31 @@ RequestImap(1394163483)
 RequestImap(-483649675)
 RequestImap(-782601262)
 RequestImap(212587871)
-RequestImap(-436566493)
+RemoveImap(-436566493)
 RequestImap(-677790400)
-RequestImap(143811737)
+RemoveImap(143811737)
 RequestImap(1679182807)
 RequestImap(-1512794226)
 RequestImap(146172383)
 RequestImap(876228895)
 RequestImap(1417687142)
 RequestImap(-2035101386)
-RequestImap(1520435387)
+RemoveImap(1520435387)
 RequestImap(1078633574)
 RequestImap(1305074360)
 RequestImap(1048677741)
-RequestImap(1284188544)
+RemoveImap(1284188544)
 RequestImap(-1986089134)
 RequestImap(913995529)
 RequestImap(-730093764)
 RequestImap(-359734366)
 RequestImap(175173994)
-RequestImap(-686953321)
-RequestImap(54029413)
+RemoveImap(-686953321)
+RemoveImap(54029413)
 RequestImap(-739754595)
 RequestImap(-931280709)
-RequestImap(-1737485501)
-RequestImap(-1070234238)
+RemoveImap(-1737485501)
+RemoveImap(-1070234238)
 RequestImap(191078900)
 RequestImap(-2096572276)
 RequestImap(2015532863)
@@ -2178,8 +2321,8 @@ RequestImap(-800942395)
 RequestImap(-741366935)
 RequestImap(-1593790123)
 RequestImap(-595698218)
-RequestImap(-1269989522)
-RequestImap(-1995815064)
+RemoveImap(-1269989522)
+RemoveImap(-1995815064)
 RequestImap(-1716205818)
 RequestImap(728046625)
 RequestImap(2033090463)
@@ -2195,7 +2338,7 @@ RequestImap(1290812287)
 RequestImap(-1537525865)
 RequestImap(2079207010)
 RequestImap(1736386364)
-RequestImap(-2071756699)
+RemoveImap(-2071756699)
 RequestImap(-1781758360)
 RequestImap(1184975829)
 RequestImap(1173232190)
@@ -2251,8 +2394,8 @@ RequestImap(202086482)
 RequestImap(-87394864)
 RequestImap(1473078398)
 RequestImap(-421457898)
-RequestImap(1044079550)
-RequestImap(894787561)
+RemoveImap(1044079550)
+RemoveImap(894787561)
 RequestImap(-689352221)
 RequestImap(1722569012)
 RequestImap(-451832572)
@@ -2277,35 +2420,40 @@ RequestImap(913170302)
 RequestImap(702867922)
 RequestImap(187740801)
 RequestImap(-523896426)
-RequestImap(483041556)
+RemoveImap(483041556)
 RequestImap(-797033116)
-RequestImap(-455342387)
-RequestImap(-1407773372)
-RequestImap(2020752077)
+RemoveImap(-455342387)
+RemoveImap(-1407773372)
+RemoveImap(2020752077)
 RequestImap(593772301)
 RequestImap(207032563)
 RequestImap(-1984361543)
-RequestImap(-869788001)
-RequestImap(-691393565)
-RequestImap(-1448947307)
-RequestImap(-1171033418)
+RemoveImap(-869788001)
+RemoveImap(-691393565)
+RemoveImap(-1448947307)
+RemoveImap(-1171033418)
 RequestImap(-487373767)
 RequestImap(341106871)
-RequestImap(-835267464)
-RequestImap(992700940)
-RequestImap(-1324099905)
-RequestImap(1589293578)
-RequestImap(1435082664)
-RequestImap(-2091615427)
+RemoveImap(-835267464)
+RemoveImap(992700940)
+RemoveImap(-1324099905)
+RemoveImap(1589293578)
+RemoveImap(1435082664)
+RemoveImap(-2091615427)
 RequestImap(227706189)
-RequestImap(1587857798)
-RequestImap(-454287921)
-RequestImap(1735860959)
+RemoveImap(1587857798)
+RemoveImap(-454287921)
+RemoveImap(1735860959)
 RequestImap(-109606367)
-RequestImap(-1997605640)
-RequestImap(2066602358)
-RequestImap(-1374896333)
-RequestImap(441668603)
+RemoveImap(-1997605640)
+RemoveImap(2066602358)
+RemoveImap(-1374896333)
+RemoveImap(441668603)
+RequestImap(-165202905)
+RequestImap(-1377975054)
+RequestImap(897624424)
+RequestImap(-1327148782)
+RequestImap(-1965378386)
 RequestImap(-960397707)
 RequestImap(1424082059)
 RequestImap(-1939038021)
@@ -2341,7 +2489,7 @@ RequestImap(1191890045)
 RequestImap(19217583)
 RequestImap(-284612948)
 RequestImap(-846230557)
-RequestImap(-1614141377)
+RemoveImap(-1614141377)---Dakota River Coach Crash
 RequestImap(-926795318)
 RequestImap(2095421392)
 RequestImap(82084523)
@@ -2374,9 +2522,9 @@ RequestImap(-697307430)
 RequestImap(633503129)
 RequestImap(-1536198599)
 RequestImap(1759143160)
-RequestImap(-677362237)
-RequestImap(1641449717)
-RequestImap(-562289114)
+RemoveImap(-677362237)
+RemoveImap(1641449717)
+RemoveImap(-562289114)
 RequestImap(-947895270)
 RequestImap(386231914)
 RequestImap(-329705198)
@@ -2417,11 +2565,11 @@ RequestImap(434145706)
 RequestImap(654746614)
 RequestImap(1965736001)
 RequestImap(1650694835)
-RequestImap(1133172356)
-RequestImap(-559257162)
-RequestImap(418666411)
-RequestImap(651621232)
-RequestImap(979670262)
+RemoveImap(1133172356)
+RemoveImap(-559257162)
+RemoveImap(418666411)
+RemoveImap(651621232)
+RemoveImap(979670262)
 RequestImap(-1452136643)
 RequestImap(-744260705)
 RequestImap(1424293412)
@@ -2436,7 +2584,7 @@ RequestImap(1557076971)
 RequestImap(1913538153)
 RequestImap(2113454609)
 RequestImap(-1865650458)
-RequestImap(-1015786727)
+RemoveImap(-1015786727)
 RequestImap(-1560636071)
 RequestImap(-904833761)
 RequestImap(103750283)
@@ -2474,7 +2622,7 @@ RequestImap(-492341871)
 RequestImap(-15009406)
 RequestImap(1191283411)
 RequestImap(507232138)
-RequestImap(-604091710)
+RemoveImap(-604091710)
 RequestImap(495423143)
 RequestImap(-2131576785)
 RequestImap(-2137016051)
@@ -2486,10 +2634,10 @@ RequestImap(2107567819)
 RequestImap(1108015391)
 RequestImap(-1202265833)
 RequestImap(-1852256117)
-RequestImap(728379187)
+RemoveImap(728379187)
 RequestImap(375693548)
 RequestImap(1502951187)
-RequestImap(-636161219)
+RemoveImap(-636161219)
 RequestImap(1636184722)
 RequestImap(154479184)
 RequestImap(371690004)
@@ -2507,7 +2655,7 @@ RequestImap(-2051059045)
 RequestImap(-612173099)
 RequestImap(-1408478050)
 RequestImap(-1974746920)
-RequestImap(1171226610)
+RemoveImap(1171226610)
 RequestImap(406701199)
 RequestImap(-1151968796)
 RequestImap(1975720265)
