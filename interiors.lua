@@ -25,7 +25,7 @@ Citizen.CreateThread(function()
             else
                 ActivateInteriorEntitySet(interior, "front_windows")
                 ActivateInteriorEntitySet(interior, "val_saloon_br03_bed")
-                ActivateInteriorEntitySet(interior, "4_chair_poker_set")
+                ActivateInteriorEntitySet(interior, "6_chair_poker_set")
                 --("Valentine Saloon Interior Activated")
             end
         end
@@ -231,60 +231,6 @@ Citizen.CreateThread(function()
             end
         end
 		
-		-- local interior = GetInteriorAtCoords(-1090.7846679688,711.73596191406,83.230895996094)
-        -- local isValid = IsValidInterior(interior)
-        -- if isValid then
-	    --     if IsInteriorEntitySetActive(interior, "mp006_mshine_theme_hunter") then
-		-- 		--("Interior Already Active")
-	    --     else
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_band2")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_bar_benchAndFrame")
-        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_dressing_5")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_hidden_door_open")
-		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall1")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_location1")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall2")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_Still_02")
-		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_theme_hunter")
-        --         --("Interior Activated")
-        --     end
-        -- end
-		
-		-- local interior = GetInteriorAtCoords(-2774.65625,-3046.2746582031,-9.70361328125)
-        -- local isValid = IsValidInterior(interior)
-        -- if isValid then
-	    --     if IsInteriorEntitySetActive(interior, "mp006_mshine_theme_refined") then
-		-- 		--("Interior Already Active")
-	    --     else
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_band2")
-        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_dressing_5")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_hidden_door_open")
-		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall1")
-        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_location1")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall2")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_Still_02")
-		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_theme_refined")
-        --         --("Interior Activated")
-        --     end
-        -- end
-		
-		-- local interior = GetInteriorAtCoords(1629.7342529297,828.16253662109,123.93880462646)
-        -- local isValid = IsValidInterior(interior)
-        -- if isValid then
-	    --     if IsInteriorEntitySetActive(interior, "mp006_mshine_theme_goth") then
-		-- 		--("Interior Already Active")
-	    --     else
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_band2")
-        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_dressing_5")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_hidden_door_open")
-		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall1")
-        --         --ActivateInteriorEntitySet(interior, "mp006_mshine_location1")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_shelfwall2")
-        --         ActivateInteriorEntitySet(interior, "mp006_mshine_Still_02")
-		-- 		ActivateInteriorEntitySet(interior, "mp006_mshine_theme_goth")
-        --         --print("Interior Activated")
-        --     end
-        -- end
         isLoaded = true
     end
 end)
@@ -364,8 +310,8 @@ RequestImap(-1158072415) -- Valentine -- Main Street Saloon Sign in front -CLean
 --------------------------------                                   ############# -- Valentine Mainstreet General Store   -- ###############                                       ----------------------
 RemoveImap(406334892) -- Valentine -- General Store Closed Sign on door --
 RemoveImap(1228600352) -- Valentine General Store boarded up
- RequestImap(135886022) -- Valentine -- Sign in front of General Store
- RequestImap(766024860) -- missing blue posts hotel
+RequestImap(135886022) -- Valentine -- Sign in front of General Store
+RequestImap(766024860) -- missing blue posts hotel
 --------------------------------                                   ############# -- Valentine Cemetery                   -- ###############                                       ----------------------
 RemoveImap(-391187090) -- Grass on grave Valentine cemetery
 RemoveImap(-1902184438) -- dirt pile from grave dug Valentine cemetery
@@ -523,7 +469,7 @@ RemoveImap(-462274808) -- Small Box in wgaon
 RemoveImap(-1284301817) -- Antlers on German Wagon
 RemoveImap(1169958167) -- Red Table Cloth German Wagon
 
-RequestImap(-1293161516)
+
 
 --Arthurs Wagon
 RemoveImap(2072112547) --  Wagon v1 with Canopy
@@ -816,8 +762,27 @@ RequestImap(-1253110600) -- beechers field hole in ground fix
 RequestImap(1861460906)
 ------------------------------------- #### END OF HOLE AT -1627.81, 224.5, 106.45 ####
 
+
+-- Annesburg & Region
+--RequestImap(582879672)  -- Fast Travel
+RemoveImap(582879672)
+--RequestImap(-1011647266)  -- Sheriff office parts
+--RequestImap(-687164887)   -- Model LOD do not remove
+--RequestImap(429527177)    -- log fencing parts and dec
+--RequestImap(-1584316325)  -- Crates, Barrels and Wagons #01
+--RequestImap(-537740003)   -- Crates, Barrels and Wagons #02
+--RequestImap(-1984145124)  -- Rope on water
+RequestImap(1517736440)     -- Building Construction Part #01
+RequestImap(-693132475)     -- Building Construction Part #02
+--RequestImap(-1509154451)  -- Building Construction Completed (Walls) #01
+--RequestImap(-87516051)    -- Building Construction Completed (Roof) #02
+--RequestImap(1912921446)   -- Unknown Imap at Building Construction #01
+--RequestImap(555501256)    -- Unknown Imap at Building Construction #02
+--RequestImap(934782463)    -- Unknown Imap at Building Construction #03
+--RequestImap(-1315256079)  -- Unknown Imap at Docks #01
+
 ----------------------- farm with hole in ground next to W in West Elizabeth 
-RequestImap(-928367655)
+RemoveImap(-928367655)
 RequestImap(890107948)
 RequestImap(1153046408)
 RequestImap(1634621556)
@@ -866,7 +831,7 @@ RemoveImap(-118700196) --props outside
 RequestImap(991016631)
 RequestImap(57105576)
 RequestImap(238757788)
-RequestImap(927020127)
+-- RequestImap(927020127)
 RemoveImap(1388161943)
 RequestImap(-7594117)
 RequestImap(-1680050035)
@@ -908,6 +873,7 @@ RequestImap(-274080837) -- fixed hole in wall
 
 ----------------------- House interior 1119 481.74 96
 RequestImap(-787042507)
+RequestImap(-1543080891)
 ------------------------------------- #### END House interior ####
 
 ----------------------- Patch hole in building -1860, -1722, 109.25
@@ -1015,7 +981,6 @@ RequestImap(325677491)
 RemoveImap(1823159188)
 RequestImap(-407068688)
 RequestImap(1552753100)
-RequestImap(886997475)
 RemoveImap(1548242606)
 RequestImap(-555917871)
 RequestImap(1777348822)
@@ -1494,7 +1459,7 @@ RequestImap(-2133417899)
 RequestImap(-891994084)
 RequestImap(1733948592)
 RequestImap(634831342)
-RequestImap(-528294019)
+-- RequestImap(-528294019)
 RequestImap(-943891161)
 RequestImap(-914406102)
 RequestImap(1855900423)
@@ -1539,20 +1504,22 @@ RequestImap(782453481)
 RequestImap(203916786)
 RequestImap(1891601353)
 RequestImap(320262265)
-RequestImap(-615794465)
-RequestImap(-724540003)
+-- RequestImap(-615794465)
+-- RequestImap(-724540003)
 RequestImap(-307327135)
-RequestImap(1492058366)
-RequestImap(920612809)
-RequestImap(-437187151)
-RequestImap(820079465)
-RequestImap(1424964403)
-RequestImap(423891836)
-RequestImap(-163787010)
-RequestImap(777001839)
-RequestImap(-200959126)
-RequestImap(-794503195)
+-- RequestImap(1492058366)
+-- RequestImap(920612809)
+-- RequestImap(-437187151)
+-- RequestImap(820079465)
+-- RequestImap(1424964403)
+-- RequestImap(423891836)
+-- RequestImap(-163787010)
+-- RequestImap(777001839)
+-- RequestImap(-200959126)
+-- RequestImap(-794503195)
+--RequestImap(-543171902) -- Bacchus Bridge damaged LOD
 RequestImap(1364392658)
+RequestImap(890452998)
 RequestImap(-882460089)
 RequestImap(-1835067413)
 RequestImap(-1392150519)
@@ -1575,19 +1542,19 @@ RemoveImap(-1045062790)
 RemoveImap(247969883)
 RemoveImap(-1272426249)
 RemoveImap(334535013)--Rubbish in front of Annesburg Mine
-RequestImap(582879672)
+-- RequestImap(582879672)
 RequestImap(1713454259)
 RequestImap(-1417469821)
 RequestImap(1798244378)
 RequestImap(-1665620584)
-RemoveImap(-537740003)--Carts and junk in Annesburg
-RequestImap(-1584316325)
+-- RemoveImap(-537740003)--Carts and junk in Annesburg
+-- RequestImap(-1584316325)
 RequestImap(-1085363933)
-RequestImap(1517736440)
-RequestImap(-1509154451)
-RequestImap(-693132475)
-RequestImap(-1984145124)
-RequestImap(-1315256079)
+-- RequestImap(1517736440)
+-- RequestImap(-1509154451)
+-- RequestImap(-693132475)
+-- RequestImap(-1984145124)
+-- RequestImap(-1315256079)
 RequestImap(-1653831205)
 RequestImap(-1307469679)
 RequestImap(-2092712551)
@@ -1707,7 +1674,7 @@ RequestImap(504746979)
 RequestImap(138913863)
 RequestImap(-90108678)
 RemoveImap(1258244391)
-RemoveImap(-501793326)
+RequestImap(-501793326) --Blackwater prebuilt buildings
 RemoveImap(1490756544)
 RemoveImap(-753454183)
 RemoveImap(-1854368742)
@@ -2055,13 +2022,13 @@ RequestImap(-1389718656)
 RequestImap(-958046355)
 RequestImap(2107657444)
 RequestImap(-2023595928)
-RequestImap(-759698431)
+-- RequestImap(-759698431)
+RemoveImap(-759698431)
 RemoveImap(-406964748)
 RequestImap(481636996)
 RequestImap(-1671953459)
 RemoveImap(910941329)
 RequestImap(518127510)
-RequestImap(1817836578)
 RemoveImap(758684739)
 RemoveImap(-661825463)
 RequestImap(1343484786)
@@ -2072,7 +2039,8 @@ RequestImap(1603294144)
 RequestImap(-1754425204)
 RequestImap(-1036501021)
 RequestImap(1871051363)
-RequestImap(945502524)
+-- RequestImap(945502524)
+RemoveImap(945502524)
 RemoveImap(-1436188587)
 RemoveImap(-468702164)
 RequestImap(-687151759)
@@ -2449,11 +2417,12 @@ RemoveImap(-1997605640)
 RemoveImap(2066602358)
 RemoveImap(-1374896333)
 RemoveImap(441668603)
-RequestImap(-165202905)
+-- RequestImap(-165202905)
+RemoveImap(-165202905) -- green over hole (no trail)
 RequestImap(-1377975054)
-RequestImap(897624424)
-RequestImap(-1327148782)
-RequestImap(-1965378386)
+RemoveImap(897624424)
+RemoveImap(-1327148782)
+RemoveImap(-1965378386)
 RequestImap(-960397707)
 RequestImap(1424082059)
 RequestImap(-1939038021)
@@ -2619,9 +2588,9 @@ RequestImap(-763069375)
 RequestImap(-522714993)
 RequestImap(-1352620713)
 RequestImap(-492341871)
-RequestImap(-15009406)
-RequestImap(1191283411)
-RequestImap(507232138)
+-- RequestImap(-15009406)
+-- RequestImap(1191283411)
+-- RequestImap(507232138)
 RemoveImap(-604091710)
 RequestImap(495423143)
 RequestImap(-2131576785)
@@ -2707,3 +2676,23 @@ RequestImap(-141795616)
 RequestImap(-1973910443)
 RequestImap(1883767827)
 RequestImap(-1562607865)
+
+-- BOUNTY BOARDS --
+--RequestImap(1570947227) -- Annesburg
+RequestImap(227456234) --Annesburg
+RequestImap(59120723) -- Armadillo
+RequestImap(-1975145165) -- Benedict
+RequestImap(-1293161516) -- Blackwater
+--RequestImap(-214604861) -- Emerald Station
+RequestImap(-1913584952)--Emerald Station
+RequestImap(1817836578) -- Rhodes
+RequestImap(1418611013) -- Riggs
+RequestImap(-226455701) -- StDenis
+RequestImap(-1019371157) -- Strawberry
+RequestImap(1296658155) -- Tumbleweed
+--RequestImap(886997475) -- Valentine
+RequestImap(952801839)-- Valentine
+--RequestImap(-428652579) -- Vanhorn
+RequestImap(-1487154162) --Vanhorn
+RequestImap(-605257184) -- Wallace
+--END BOUNTY BOARDS --
